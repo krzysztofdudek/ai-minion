@@ -62,7 +62,12 @@ ACTION:
     - **Edge Cases**: Questions about handling exceptional scenarios
 3.2. Add the prepared questions to the "Questions" section of the plan file following the exact format specified in the template. Clearly mark any questions added after the initial round as "NEW:".
 3.3. Identify potential challenges or complications that might arise during implementation based on the analysis.
-3.4. Write these potential challenges into the "Potential Risks" subsection of the plan file, including potential mitigation strategies.
+3.4. Write these potential challenges into the "Potential Risks" subsection of the plan file, including potential mitigation strategies. Consider risks such as:
+    - Complexity leading to potential errors
+    - Performance implications
+    - Security vulnerabilities
+    - Impact on existing functionality (regression)
+    - Need to split complex changes (>300 lines or high complexity) across multiple sessions
 3.5. Ask stakeholder to respond to the questions in the plan file. Do not respond to your own questions. Wait for the user's response.
 3.6. When stakeholder responds to the questions, return to step 2 to reanalyze the codebase with the new information.
 3.7. DO NOT PROCEED TO STEP 4 UNTIL ALL QUESTIONS ARE ANSWERED SATISFACTORILY. Multiple iterations of questions and responses may be necessary. All uncertainties must be resolved before continuing.
@@ -75,15 +80,20 @@ ACTION:
 4.2. For each logical area defined, list the specific requirements it addresses.
 4.3. For each logical area, define technical tasks. For each task, include:
     - Specific files to be modified
+    - Specific functions/sections within the file to be modified
     - Exact nature of the changes
+    - Order of changes if multiple changes occur within the same task
     - Dependencies on other tasks
     - Estimated complexity (Low, Medium, High)
+    - Estimated number of distinct edits required (especially for complex tasks)
     - Potential impact on other system components
+    - If refactoring, note the specific refactoring pattern being applied
 4.4. Add a verification step description after each logical group of tasks that confirms how the implementation meets the requirements for that group.
 4.5. Include specific test cases or validation criteria within the verification step for each logical area.
 4.6. Ensure the plan accounts for identified risks (from 3.4) and dependencies (from 2.6).
-4.7. Ask stakeholder for feedback on the action plan. The plan can be either approved or rejected with clarifications. Always wait for the user's response before proceeding.
-4.8. If stakeholder approves the action plan, proceed to step 5. If stakeholder provides any further clarifications, return to step 2 to reanalyze the codebase and ask additional questions if needed.
+4.7. Specifically review tasks involving large files (>300 lines) or high complexity. Determine if they should be broken down into smaller, sequential tasks or if session splitting should be recommended in the plan.
+4.8. Ask stakeholder for feedback on the action plan. The plan can be either approved or rejected with clarifications. Always wait for the user's response before proceeding.
+4.9. If stakeholder approves the action plan, proceed to step 5. If stakeholder provides any further clarifications, return to step 2 to reanalyze the codebase and ask additional questions if needed.
 
 ### 5. Execute Tasks Sequentially
 Work through the tasks one by one, strictly following the order defined in the plan.
@@ -95,18 +105,19 @@ ACTION:
 5.4. Review the files to be modified for the current task.
 5.5. Confirm your understanding of the changes needed based on the task description.
 5.6. Implement the changes precisely as described in the task.
-5.7. For the modified files, check for:
+5.7. If the task involves refactoring, ensure each intermediate step maintains functionality or uses temporary duplication as a valid interim step if necessary.
+5.8. For the modified files, check for:
     a. Consistency with the existing codebase style
     b. Potential side effects
     c. Proper error handling
     d. Edge case coverage
-5.8. Verify the implemented changes against the task description and requirements.
-5.9. Mark the task as done by adding "✅ DONE" at the end of the task line.
-5.10. Check if the completed task was the last task in its logical group.
-5.11. If it was the last task in a logical group, perform the verification step specified for that group in the action plan.
-5.12. If any verification fails (either step 5.8 or 5.11), document the specific issue, stop execution, and return to step 3 to prepare questions about it.
-5.13. If the current task was not the last task in the project, return to step 5.2 to take the next uncompleted task.
-5.14. If all tasks are completed and marked as done, proceed to step 6.
+5.9. Verify the implemented changes against the task description and requirements.
+5.10. Mark the task as done by adding "✅ DONE" at the end of the task line.
+5.11. Check if the completed task was the last task in its logical group.
+5.12. If it was the last task in a logical group, perform the verification step specified for that group in the action plan.
+5.13. If any verification fails (either step 5.9 or 5.12) OR if unexpected changes are needed that deviate from the plan OR if the plan needs updating for any reason: document the specific issue/reason, stop execution, and return to step 3 to update the plan and/or prepare questions.
+5.14. If the current task was not the last task in the project, return to step 5.2 to take the next uncompleted task.
+5.15. If all tasks are completed and marked as done, proceed to step 6.
 
 ### 6. Validate Plan Completion
 After all tasks are marked as done, conduct a thorough review to confirm every item is completed and documented.
@@ -278,8 +289,10 @@ Form:
 - When working on an existing plan file, never erase or replace previous content (except for the **Action plan** section when approved by the stakeholder). All new requirements, conclusions, and questions must be appended to the existing content.
 - Mark completed tasks with "✅ DONE" at the end of the task line.
 - Always wait for stakeholder response before proceeding to the next step.
-- If you discover new information during implementation that contradicts earlier assumptions, immediately stop and return to step 3.
-- Never implement anything that hasn't been explicitly approved by the stakeholder.
+- **Work on only one technical task (file modification) at a time.** Do not attempt parallel execution.
+- **Never perform multiple simultaneous edits to the same file.** Complete one edit/task fully before starting the next on that file.
+- If you discover new information during implementation that contradicts earlier assumptions or requires plan changes, immediately stop and return to step 3.
+- Never implement anything that hasn't been explicitly approved by the stakeholder via the Action Plan.
 - When adding new questions after initial questions have been answered, clearly mark them as "NEW:" to distinguish them from previously answered questions.
 - Document all technical decisions made during implementation in the Implementation Summary.
-- If implementation of a task requires deviation from the planned approach, stop immediately and seek stakeholder approval through a new question.
+- If implementation of a task requires deviation from the planned approach, stop immediately and seek stakeholder approval through a new question (return to step 3).
