@@ -161,7 +161,3 @@ Requirements:
 - Always follow the instructions for the plan described in .cursorrules file. When not sure how to do it, read the .cursorrules file.
 - Stakeholder is able to answer the questions only through the plan file. Always ask questions using the file.
 - When working on existing plan file do not ever erase it or replace content (besides **Action plan**). All the new requirements, conclusions and questions have to be appended to the existing.
-
-## Rules for working with code
-- Do not hardcode any secrets. If stakeholder ask for it, always propose alternative approach.
-- Stored procedures is an old concept and we don't want to use that. SQL should be inside the application code.
