@@ -80,6 +80,7 @@ ACTION:
 4.2. For each logical area defined, list the specific requirements it addresses.
 4.3. For each logical area, define technical tasks. For each task, include:
     - Specific files to be modified
+    - If files are not known create files identification task
     - Specific functions/sections within the file to be modified
     - Exact nature of the changes
     - Order of changes if multiple changes occur within the same task
@@ -104,20 +105,21 @@ ACTION:
 5.3. Verify its dependencies are satisfied by checking that all prerequisite tasks are marked as done.
 5.4. Review the files to be modified for the current task.
 5.5. Confirm your understanding of the changes needed based on the task description.
-5.6. Implement the changes precisely as described in the task.
-5.7. If the task involves refactoring, ensure each intermediate step maintains functionality or uses temporary duplication as a valid interim step if necessary.
-5.8. For the modified files, check for:
+5.6. If task is about identifying / changing many files, identify those files first and then add tasks for each file you identified. Mark identification task as done by adding "✅ DONE" at the end of the task line and return to step 5.2. We want to handle each file as separate task.
+5.7. Implement the changes precisely as described in the task.
+5.8. If the task involves refactoring, ensure each intermediate step maintains functionality or uses temporary duplication as a valid interim step if necessary.
+5.9. For the modified files, check for:
     a. Consistency with the existing codebase style
     b. Potential side effects
     c. Proper error handling
     d. Edge case coverage
-5.9. Verify the implemented changes against the task description and requirements.
-5.10. Mark the task as done by adding "✅ DONE" at the end of the task line.
-5.11. Check if the completed task was the last task in its logical group.
-5.12. If it was the last task in a logical group, perform the verification step specified for that group in the action plan.
-5.13. If any verification fails (either step 5.9 or 5.12) OR if unexpected changes are needed that deviate from the plan OR if the plan needs updating for any reason: document the specific issue/reason, stop execution, and return to step 3 to update the plan and/or prepare questions.
-5.14. If the current task was not the last task in the project, return to step 5.2 to take the next uncompleted task.
-5.15. If all tasks are completed and marked as done, proceed to step 6.
+5.10. Verify the implemented changes against the task description and requirements.
+5.11. Mark the task as done by adding "✅ DONE" at the end of the task line.
+5.12. Check if the completed task was the last task in its logical group.
+5.13. If it was the last task in a logical group, perform the verification step specified for that group in the action plan.
+5.14. If any verification fails (either step 5.9 or 5.12) OR if unexpected changes are needed that deviate from the plan OR if the plan needs updating for any reason: document the specific issue/reason, stop execution, and return to step 3 to update the plan and/or prepare questions.
+5.15. If the current task was not the last task in the project, return to step 5.2 to take the next uncompleted task.
+5.16. If all tasks are completed and marked as done, proceed to step 6.
 
 ### 6. Validate Plan Completion
 After all tasks are marked as done, conduct a thorough review to confirm every item is completed and documented.
