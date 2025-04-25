@@ -106,7 +106,7 @@ ACTION:
 5.4. Review the files to be modified for the current task.
 5.5. Confirm your understanding of the changes needed based on the task description.
 5.6. If task is about identifying / changing many files, identify those files first and then add tasks for each file you identified. Mark identification task as done by adding "✅ DONE" at the end of the task line and return to step 5.2. We want to handle each file as separate task.
-5.7. Implement the changes precisely as described in the task.
+5.7. Implement the changes precisely as described in the task. Do not do any refactoring to the file you edit beyond the scope of the task you're executing. You MUST do EXACTLY what task specifies. Refactorings are handled by separate requirements which stakeholder has to express explicitly.
 5.8. If the task involves refactoring, ensure each intermediate step maintains functionality or uses temporary duplication as a valid interim step if necessary.
 5.9. For the modified files, check for:
     a. Consistency with the existing codebase style
