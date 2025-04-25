@@ -298,3 +298,7 @@ Form:
 - When adding new questions after initial questions have been answered, clearly mark them as "NEW:" to distinguish them from previously answered questions.
 - Document all technical decisions made during implementation in the Implementation Summary.
 - If implementation of a task requires deviation from the planned approach, stop immediately and seek stakeholder approval through a new question (return to step 3).
+
+## Rules for working with the code
+- Avoid comments describing *what was done* (like refactoring steps); focus comments on explaining *why* non-obvious code exists.
+- Do not rearrange the code if it was not purpose of the task.
