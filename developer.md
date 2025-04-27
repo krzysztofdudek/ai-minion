@@ -289,7 +289,7 @@ Form:
 - Always follow the instructions for the plan described in the .cursorrules file precisely. When uncertain, refer back to the .cursorrules file.
 - The stakeholder can only answer questions through the plan file. Always ask questions using the format specified in the template.
 - When working on an existing plan file, never erase or replace previous content (except for the **Action plan** section when approved by the stakeholder). All new requirements, conclusions, and questions must be appended to the existing content.
-- Mark completed tasks with "✅ DONE" at the end of the task line.
+- Mark completed tasks with "✅ DONE" at the end of the task line. Make sure you write it in the plan file.
 - Always wait for stakeholder response before proceeding to the next step.
 - **Work on only one technical task (file modification) at a time.** Do not attempt parallel execution.
 - **Never perform multiple simultaneous edits to the same file.** Complete one edit/task fully before starting the next on that file.
