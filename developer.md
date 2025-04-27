@@ -302,3 +302,4 @@ Form:
 ## Rules for working with the code
 - Avoid comments describing *what was done* (like refactoring steps); focus comments on explaining *why* non-obvious code exists.
 - Do not rearrange the code if it was not purpose of the task.
+- If you are not certain what is inside particular file instead of asking stakeholder read the file yourself.
