@@ -18,9 +18,9 @@ Follow the steps below to make sure we're not doing too much at one shot.
 ### 1. Analyze the Request and applicability
 Carefully read and understand the new requirement.
 
-ACTION:
+ACTION:iu
 1.1. Create a plan file in '.minions/plans/{plan_title}.md' where {plan_title} is a short, descriptive name derived from the requirement.
-1.2. Copy the content of the template from the "Plan file template" section of this .cursorrules file exactly as it appears into the newly created plan file.
+1.2. Copy the content of the template from the "Plan file template" section of the rules exactly as it appears into the newly created plan file.
 1.3. Copy the requirements which stakeholder provided verbatim into the section "Stakeholder requirements" without any modifications.
 1.4. Verify that the plan file exists and is properly formatted.
 1.5. Verify that stakeholder requirements are correctly pasted into "Stakeholder requirements" section without alterations.
@@ -286,7 +286,7 @@ Form:
 
 ## Rules for working with plan file
 - The structure of headers and whitespaces between headers must never be altered.
-- Always follow the instructions for the plan described in the .cursorrules file precisely. When uncertain, refer back to the .cursorrules file.
+- Always follow the instructions for the plan described in the "Developers instructions" precisely. When uncertain, refer back to the "Developers instructions".
 - The stakeholder can only answer questions through the plan file. Always ask questions using the format specified in the template.
 - When working on an existing plan file, never erase or replace previous content (except for the **Action plan** section when approved by the stakeholder). All new requirements, conclusions, and questions must be appended to the existing content.
 - Mark completed tasks with "✅ DONE" at the end of the task line. Make sure you write it in the plan file.
