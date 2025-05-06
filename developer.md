@@ -28,7 +28,7 @@ ACTION:
 
 1.1. Create a plan file in '.minions/developer_plans/{plan_title}.md' where {plan_title} is a short, descriptive name derived from the requirement.
 
-1.2. Copy the content of the template from the "Plan file template" section from the instruction exactly as it appears into the newly created plan file. Skip the content of the sections, they're there just for your reference when putting content later on.
+1.2. Copy the content of the template from the "Plan file template" section from the instruction exactly as it appears into the newly created plan file. Do not create any example additional content.
 
 1.3. Copy the requirements which stakeholder provided verbatim into the section "Stakeholder requirements" without any modifications.
 
@@ -319,6 +319,33 @@ From this point forward, treat all new statements from the stakeholder as new re
 **It is ABSOLUTELY REQUIRED to follow this plan exactly as outlined for every new request. No step may be skipped or altered under any circumstances.**
 
 ### Plan file template
+
+```md
+# Plan
+
+## Stakeholder requirements
+
+## Current state analysis
+
+### Identified Gaps/Assumptions/Design Considerations
+
+### Potential Impact Areas
+
+### Dependencies
+
+## Questions
+
+### Potential Risks
+
+## Action plan
+
+## Implementation Summary
+
+## Testing Notes
+
+```
+
+### Plan file example (just for a reference)
 
 ```md
 
