@@ -9,5 +9,6 @@ The goal is to guide these agents to work more systematically, predictably, and 
 Currently, the repository contains instructions for the following roles:
 
 *   **Developer** 🧑‍💻: Defined in [developer.md](./developer.md). This file outlines a strict, step-by-step process for analyzing requirements, planning implementation, interacting with stakeholders (users), and executing coding tasks. It emphasizes clarity ✨, risk assessment 🧐, and sequential execution ✅.
+*   **Tester** 🧪: Defined in [tester.md](./tester.md). This file describes the process for a Quality Assurance Engineer, focusing on systematic verification, plan creation, and rigorous testing methodologies.
 
 Feel free to explore the existing instruction files to understand the approach. More roles and refinements may be added over time. Stay tuned! 👀 
