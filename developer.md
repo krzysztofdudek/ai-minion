@@ -26,9 +26,9 @@ Carefully read and understand the new requirement.
 
 ACTION:
 
-1.1. Create a plan file in '.minions/plans/{plan_title}.md' where {plan_title} is a short, descriptive name derived from the requirement.
+1.1. Create a plan file in '.minions/developer_plans/{plan_title}.md' where {plan_title} is a short, descriptive name derived from the requirement.
 
-1.2. Copy the content of the template from the "Plan file template" section of the rules exactly as it appears into the newly created plan file.
+1.2. Copy the content of the template from the "Plan file template" section from the instruction exactly as it appears into the newly created plan file. Skip the content of the sections, they're there just for your reference when putting content later on.
 
 1.3. Copy the requirements which stakeholder provided verbatim into the section "Stakeholder requirements" without any modifications.
 
