@@ -433,6 +433,25 @@ From this point forward, treat all new statements from the stakeholder as new re
 
 (questions about requirements, behavior, design, scope, edge cases, assumptions, security, testability)
 
+1.  **(Functional Requirement - e.g., User Registration Email Conflict)**
+    **Question**: For the new user registration module (Requirement R1.2), if a user attempts to register with an email address that already exists in the system, what specific error message should be displayed, and should there be a 'Forgot Password?' link accompanying it?
+    **Context**: Requirement R1.2 specifies unique email addresses for users. Analysis of existing registration flow shows a generic error. Clarification needed for specific user experience and handling of duplicate emails.
+    **Stakeholder response**: (leave blank for stakeholder to fill)
+
+2.  **(Non-Functional Requirement - Security - e.g., API Input Validation)**
+    **Question**: Regarding the new API endpoint `/api/v2/data` (Requirement R3.1) that processes sensitive user inputs, what are the mandatory input validation checks and sanitization procedures we must implement to prevent XSS or SQL injection vulnerabilities?
+    **Context**: Requirement R3.1 involves handling user-provided data. Security analysis (Current State Analysis #7) identified a potential gap in input sanitization for similar existing endpoints. Explicit validation rules are needed to ensure security for the new endpoint.
+    **Stakeholder response**: (leave blank for stakeholder to fill)
+
+3.  **(Assumption Validation - e.g., GeoLocation API Rate Limit)**
+    **Question**: We are currently assuming that the third-party `GeoLocation` service API (Dependency D2, listed in Dependencies section) has a rate limit of at least 1000 requests per minute for our account type. Is this assumption correct, or do we need to verify this and potentially upgrade our plan?
+    **Context**: Assumption #2 (Identified Gaps/Assumptions/Design Considerations) states this rate limit. Verification is crucial as exceeding the limit could cause service disruptions for features relying on geo-location.
+    **Stakeholder response**: (leave blank for stakeholder to fill)
+
+*(Add "NEW:" prefix for subsequent rounds of questions)*
+
+NEW: 4. **(question title - e.g., ...)**
+
 ### Potential Risks
 
 (list of potential risks and challenges related to implementation, complexity, performance, security, data, dependencies, testability)
