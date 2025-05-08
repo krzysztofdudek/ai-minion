@@ -96,7 +96,7 @@ ACTION:
 - **Data Handling**: Questions about required *test data* structure, volume, generation, and lifecycle. How should sensitive data be handled in tests?
 - **Environment Setup**: Clarifications on the required testing environment setup (e.g., database state, configuration, dependencies).
 
-3.2. Add the prepared questions to the "Questions" section of the plan file following the exact format specified in the template. Clearly mark any questions added after the initial round as "NEW:".
+3.2. Add the prepared questions to the "Questions" section of the plan file following the exact format specified in the template. Clearly mark any questions added after the initial round as "NEW:". When the question relates to the file or its content, first check it yourself and then if you don't find a response, ask the stakeholder for it.
 
 3.3. Identify potential challenges or complications that might arise during the *testing and verification* process based on the analysis.
 

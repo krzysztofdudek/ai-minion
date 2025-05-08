@@ -126,7 +126,7 @@ ACTION:
 
 - **Testability/Verification**: Clarifying specific testing requirements or expectations for test coverage.
 
-3.2. Add the prepared questions to the "Questions" section of the plan file following the exact format specified in the template. Clearly mark any questions added after the initial round as "NEW:".
+3.2. Add the prepared questions to the "Questions" section of the plan file following the exact format specified in the template. Clearly mark any questions added after the initial round as "NEW:". When the question relates to the file or its content, first check it yourself and then if you don't find a response, ask the stakeholder for it.
 
 3.3. Identify potential challenges or complications that might arise during implementation based on the analysis.
 
