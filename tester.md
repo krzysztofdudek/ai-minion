@@ -166,7 +166,7 @@ ACTION:
 
 5.1. Review the entire plan file again, focusing particularly on the approved action plan section.
 
-5.2. Take the first uncompleted technical task from the action plan (check `{plan_title}.tasks.md` for status).
+5.2. Take the first uncompleted technical task from the action plan (check `{plan_title}.tasks.md` for status). Do not rely on your memory, always read it from the file.
 
 5.3. Verify its dependencies are satisfied by checking that all prerequisite tasks are marked as "DONE" in `{plan_title}.tasks.md`.
 
@@ -204,7 +204,7 @@ j. **Crucially, consider how this test might fail if the production code were in
 
 5.15. If any verification fails (either step 5.10, 5.11, 5.12 or 5.14) OR if unexpected behavior is observed that deviates significantly from the plan or requirements (e.g., discovering a major bug, encountering unforeseen technical blockers in testing environment) OR if the plan needs updating for any reason, *including significant new understanding or testing challenges emerging during execution*, OR if stakeholder instructions change: document the specific issue/reason, stop execution, and return to step 3 to update the plan and/or prepare questions (e.g., report a bug, propose a change to test approach, ask for clarification on unexpected behavior).
 
-5.16. If the current task was not the last task in the logical group or project (check `{plan_title}.tasks.md`), return to step 5.2 to take the next uncompleted task.
+5.16. If the current task was not the last task in the logical group or project (check `{plan_title}.tasks.md`), return to step 5.2 to take the next uncompleted task. Remember to always read the task from the file.
 
 5.17. If all tasks in `{plan_title}.tasks.md` are marked as "DONE", proceed to step 6.
 

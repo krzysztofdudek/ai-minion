@@ -224,9 +224,9 @@ ACTION:
 
 5.1. Review the entire plan file again, focusing particularly on the approved action plan section.
 
-5.2. Take the first uncompleted technical task from the action plan.
+5.2. Take the first uncompleted technical task from the action plan (check `{plan_title}.tasks.md` for status). Do not rely on your memory, always read it from the file.
 
-5.3. Verify its dependencies are satisfied by checking that all prerequisite tasks are marked as done.
+5.3. Verify its dependencies are satisfied by checking that all prerequisite tasks are marked as "DONE" in `{plan_title}.tasks.md`.
 
 5.4. Review the files to be modified/created for the current task. Open relevant existing code, interfaces, design documents, and tests in the IDE for context. **Access structured project knowledge (codebase index, rules, docs) as needed to ensure full understanding.**
 
@@ -275,7 +275,7 @@ j. Validation against any specific assumptions confirmed in Step 3.
 
 5.14. If any verification fails (either step 5.9, 5.10, or 5.12) OR if unexpected changes are needed that deviate significantly from the plan (e.g., discovering a major flaw in the design, encountering unforeseen technical blockers) OR if the plan needs updating for any reason, *including significant new understanding or design challenges emerging during implementation, or issues found during security/testability checks*, OR if stakeholder instructions change: document the specific issue/reason, stop execution, and return to step 3 to update the plan and/or prepare questions (e.g., propose a design change, report a blocker).
 
-5.15. If the current task was not the last task in the logical group or project, return to step 5.2 to take the next uncompleted task.
+5.15. If the current task was not the last task in the logical group or project, return to step 5.2 to take the next uncompleted task. Remember to always read the task from the file.
 
 5.16. If all tasks are completed (as verified in `{plan_title}.tasks.md`), proceed to step 6.
 
