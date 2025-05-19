@@ -22,9 +22,16 @@ Carefully read and understand the new requirement or verification request from t
 
 ACTION:
 
-1.1. Create a plan file in '.minions/tester_plans/{plan_title}.md' where {plan_title} is a short, descriptive name derived from the requirement.
+1.1. Create a plan file in `.minions/tester_plans/{plan_title}.md` where {plan_title} is a short, descriptive name derived from the requirement.
 
-1.2. Copy the content of the template from the "Plan file template" section from the instruction exactly as it appears into the newly created plan file. Do not create any example additional content.
+1.1.A. Create a corresponding task status file named `{plan_title}.tasks.md` in the same `.minions/tester_plans/` directory. Initialize this file with the high-level tasks from the action plan (once defined in step 4), each marked as "TO DO". For example:
+```markdown
+1 TO DO
+1.1 TO DO
+2 TO DO
+```
+
+1.2. Copy the content of the template from the "Plan file template" section from the instruction exactly as it appears into the newly created plan file (`{plan_title}.md`). Do not create any example additional content.
 
 1.3. Copy the requirements or verification requests which stakeholder provided verbatim into the section "Stakeholder requirements" without any modifications.
 
@@ -128,7 +135,7 @@ ACTION:
 
 4.3. For each logical area, define technical testing and verification tasks. For each task, include:
 - Specific test files or artifacts to be created or modified (e.g., `.cs` test file, test data script, Postman collection).
-- If specific test files/artifacts are not known create an "Identify verification artifacts" task first. Mark identification task as done by adding "✅ DONE" at the end of the task line and return to step 5.2. We want to handle each test file/artifact modification as separate task where feasible. Add those tasks in the current plan file.
+- If specific test files/artifacts are not known create an "Identify verification artifacts" task first. Update the status of this identification task to "DONE" in the corresponding `{plan_title}.tasks.md` file and return to step 5.2. We want to handle each test file/artifact modification as separate task where feasible. Add those tasks in the current plan file.
 - Specific classes/methods/sections within the test file/artifact to be added or modified.
 - Exact nature of the verification (e.g., "Add unit test for scenario X", "Modify integration test for dependency Y", "Define manual test steps for UI workflow", "Review AI-generated tests for method Z").
 - **Justification**: Explicitly link the task to requirements, design decisions, analysis findings, or clarified questions (e.g., "Justification: Verifies requirement R / Validates design decision D / Addresses analysis gap #M / Resolves question #N / Mitigates risk #P / Ensures test coverage for scenario S").
@@ -159,21 +166,23 @@ ACTION:
 
 5.1. Review the entire plan file again, focusing particularly on the approved action plan section.
 
-5.2. Take the first uncompleted technical task from the action plan.
+5.2. Take the first uncompleted technical task from the action plan (check `{plan_title}.tasks.md` for status).
 
-5.3. Verify its dependencies are satisfied by checking that all prerequisite tasks are marked as done.
+5.3. Verify its dependencies are satisfied by checking that all prerequisite tasks are marked as "DONE" in `{plan_title}.tasks.md`.
 
 5.4. Review the test files/artifacts to be modified/created for the current task. Open relevant existing production code, tests, design documents, and developer implementation plans in the IDE for context.
 
 5.5. Confirm your understanding of the verification needed based on the task description, justification, and associated requirements/design decisions/clarified questions.
 
-5.6. If task is about identifying / changing many test files/artifacts, identify those files/artifacts first and then add tasks for each one you identified. Mark identification task as done by adding "✅ DONE" at the end of the task line and return to step 5.2. We want to handle each test file/artifact modification as separate task where feasible. Add those tasks in the current plan file.
+5.6. If task is about identifying / changing many test files/artifacts, identify those files/artifacts first and then add tasks for each one you identified. Update the status of the identification task to "DONE" in the corresponding `{plan_title}.tasks.md` file and return to step 5.2. We want to handle each test file/artifact modification as separate task where feasible. Add those tasks in the current plan file.
 
 5.7. Perform the verification precisely as described in the task. This might involve creating new test code (e.g., unit tests, integration tests), modifying existing tests, setting up test data, or performing manual validation steps. **If reviewing AI-generated tests, meticulously review them for correctness, missed scenarios, logical flaws, and adherence to standards**. Adhere to project testing standards and conventions (e.g., AAA pattern, naming conventions).
 
-5.8. If the task involves modifying existing tests, ensure they still correctly verify the intended behavior.
+5.8. Upon successful completion and local verification of a task (as per its verification criteria in the action plan), update its status to "DONE" in the corresponding `{plan_title}.tasks.md` file. For tasks that are not yet completed or are blocked, ensure their status in `{plan_title}.tasks.md` is "TO DO".
 
-5.9. For the modified/created test files/artifacts, check for:
+5.9. If the task involves modifying existing tests, ensure they still correctly verify the intended behavior.
+
+5.10. For the modified/created test files/artifacts, check for:
 a. Consistency with the existing test codebase style and project conventions.
 b. Proper mocking of dependencies where necessary.
 c. Clear Arrange, Act, Assert sections.
@@ -185,29 +194,27 @@ h. Verification that the test explicitly addresses the intended requirement/desi
 i. Validation against any specific assumptions confirmed in Step 3.
 j. **Crucially, consider how this test might fail if the production code were incorrect.**
 
-5.10. Verify the implemented verification against the task description, requirements, and task-specific verification criteria. Run relevant local builds and test suites. **Ensure tests compile and pass when the code is correct.**
+5.11. Verify the implemented verification against the task description, requirements, and task-specific verification criteria. Run relevant local builds and test suites. **Ensure tests compile and pass when the code is correct.**
 
-5.11. **Crucially, verify that tests fail when the production code *should* cause a failure**. This may involve temporarily introducing a bug or altering production code behavior relevant to the test scenario to confirm the test correctly detects it. If a test passes incorrectly (a false positive), it must be fixed.
+5.12. **Crucially, verify that tests fail when the production code *should* cause a failure**. This may involve temporarily introducing a bug or altering production code behavior relevant to the test scenario to confirm the test correctly detects it. If a test passes incorrectly (a false positive), it must be fixed.
 
-5.12. Mark the task as done by adding "✅ DONE" at the end of the task line in the plan file.
-
-5.13. Check if the completed task was the last task in its logical group.
+5.13. Check if the completed task was the last task in its logical group (refer to `{plan_title}.tasks.md` to see subsequent tasks for the group).
 
 5.14. If it was the last task in a logical group, perform the verification step specified for that group in the action plan. This might involve running integration test suites, performing manual validation steps, checking logs/metrics, reviewing test coverage reports, or comparing results against expected outcomes defined in requirements/questions. If significant requirement-related verification gaps or unexpected behaviors are found, treat this as a verification failure.
 
-5.15. If any verification fails (either step 5.9, 5.10, 5.11, or 5.14) OR if unexpected behavior is observed that deviates significantly from the plan or requirements (e.g., discovering a major bug, encountering unforeseen technical blockers in testing environment) OR if the plan needs updating for any reason, *including significant new understanding or testing challenges emerging during execution*, OR if stakeholder instructions change: document the specific issue/reason, stop execution, and return to step 3 to update the plan and/or prepare questions (e.g., report a bug, propose a change to test approach, ask for clarification on unexpected behavior).
+5.15. If any verification fails (either step 5.10, 5.11, 5.12 or 5.14) OR if unexpected behavior is observed that deviates significantly from the plan or requirements (e.g., discovering a major bug, encountering unforeseen technical blockers in testing environment) OR if the plan needs updating for any reason, *including significant new understanding or testing challenges emerging during execution*, OR if stakeholder instructions change: document the specific issue/reason, stop execution, and return to step 3 to update the plan and/or prepare questions (e.g., report a bug, propose a change to test approach, ask for clarification on unexpected behavior).
 
-5.16. If the current task was not the last task in the logical group or project, return to step 5.2 to take the next uncompleted task.
+5.16. If the current task was not the last task in the logical group or project (check `{plan_title}.tasks.md`), return to step 5.2 to take the next uncompleted task.
 
-5.17. If all tasks are completed and marked as done, proceed to step 6.
+5.17. If all tasks in `{plan_title}.tasks.md` are marked as "DONE", proceed to step 6.
 
 ### 6. Validate Plan Completion
 
-After all tasks are marked as done, conduct a thorough review to confirm every item is completed, documented, and verified.
+After all tasks are marked as done in `{plan_title}.tasks.md`, conduct a thorough review to confirm every item is completed, documented, and verified.
 
 ACTION:
 
-6.1. Verify that all technical tasks in the action plan are marked as done with "✅ DONE".
+6.1. Verify that all technical tasks in the action plan have their status as "DONE" in the corresponding `{plan_title}.tasks.md` file.
 
 6.2. Conduct a comprehensive validation by reviewing each original requirement/request and confirming it has been *verified* according to the plan's verification steps. Perform a final traceability check, ensuring every requirement, key design decision, clarified question, and identified assumption maps to *verification evidence* (passing tests, manual validation notes, coverage reports) in the plan.
 
@@ -245,6 +252,9 @@ From this point forward, treat all new statements from the stakeholder as new re
 **It is ABSOLUTELY REQUIRED to follow this plan exactly as outlined for every new request. No step may be skipped or altered under any circumstances.**
 
 ### Plan file template
+
+This template should be copied verbatim into `.minions/tester_plans/{plan_title}.md`.
+**Note:** Task statuses (DONE/TO DO) for the "Action plan" items are tracked exclusively in a separate file: `.minions/tester_plans/{plan_title}.tasks.md`.
 
 ```md
 # Plan
@@ -378,7 +388,7 @@ Tasks:
 1.2. **Add Happy Path Test:** Add `CalculateDiscount_ValidInputs_ReturnsCorrectDiscount` unit test to `PricingServiceTests.cs`. - Dependencies: 1.1 - Complexity: Low - Impact: Adds one test method - Justification: Verifies R1. - Verification: Test compiles and passes with valid inputs.
 1.3. **Add Edge Case Tests (Zeros):** Add `CalculateDiscount_ZeroPriceOrDiscount_ReturnsZeroDiscount` unit test to `PricingServiceTests.cs`. - Dependencies: 1.1 - Complexity: Low - Impact: Adds one test method - Justification: Verifies R2. - Verification: Test compiles and passes with zero inputs.
 1.4. **Add Failure Path Test (Negative):** Add `CalculateDiscount_NegativeInput_ThrowsArgumentOutOfRangeException` unit test to `PricingServiceTests.cs`. - Dependencies: 1.1 - Complexity: Medium - Impact: Adds one test method - Justification: Verifies Q#1. - Verification: Test compiles and *correctly throws* `ArgumentOutOfRangeException` for negative inputs.
-1.5. **Review Generated Tests (Optional, if using AI):** Meticulously review any AI-generated tests for `PricingServiceTests.cs` for correctness, missed scenarios, logical flaws, and adherence to AAA/naming. Modify as needed. - Dependencies: 1.2, 1.3, 1.4 (if AI assisted these) - Complexity: Medium - Impact: Improves test reliability - Justification: Mitigates Risk (AI Test Quality). - Verification: Reviewed tests adhere to standards and correctly verify requirements.
+1.5. **Review Generated Tests (Optional, if using AI):** Meticulously review any AI-generated tests for `PricingServiceTests.cs` for correctness, missed scenarios, logical flaws, and adherence to AAA pattern. Modify as needed. - Dependencies: 1.2, 1.3, 1.4 (if AI assisted these) - Complexity: Medium - Impact: Improves test reliability - Justification: Mitigates Risk (AI Test Quality). - Verification: Reviewed tests adhere to standards and correctly verify requirements.
 
 Verification (Logical Area): Run all unit tests in `PricingServiceTests.cs`. Ensure all tests pass when production code is correct. **Verify tests correctly fail** if, for example, the `CalculateDiscount` method was modified to return 0 for negative input instead of throwing an exception. Review test code against requirements R1, R2, Q#1, and testing best practices (AAA, naming, assertions).
 
@@ -448,10 +458,10 @@ Instructions for testing or verifying each implemented feature, aimed at QA or o
 ## Rules for working with plan file
 
 - The structure of headers and whitespaces between headers must never be altered.
-- Always follow the instructions for the plan described in the "Tester Instructions" precisely. When uncertain, refer back to these instructions.
+- Always follow the instructions for the plan described in the "Tester Instructions" precisely. When uncertain, refer back to the "Tester Instructions".
 - The stakeholder can only answer questions through the plan file. Always ask questions using the format specified in the template.
 - When working on an existing plan file, never erase or replace previous content (except for the **Action plan** section when approved by the stakeholder). All new requirements, conclusions, and questions must be appended to the existing content.
-- Mark completed tasks with "✅ DONE" at the end of the task line. Make sure you write it in the plan file.
+- Task completion status (e.g. "DONE", "TO DO") is tracked exclusively in the `{plan_title}.tasks.md` file associated with the plan.
 - Always wait for stakeholder response before proceeding to the next step.
 
 - **Work on only one technical task (test file/artifact modification or verification step) at a time.** Do not attempt parallel execution.

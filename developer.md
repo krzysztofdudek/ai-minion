@@ -26,9 +26,17 @@ Carefully read and understand the new requirement.
 
 ACTION:
 
-1.1. Create a plan file in '.minions/developer_plans/{plan_title}.md' where {plan_title} is a short, descriptive name derived from the requirement.
+1.1. Create a plan file in `.minions/developer_plans/{plan_title}.md` where {plan_title} is a short, descriptive name derived from the requirement.
 
-1.2. Copy the content of the template from the "Plan file template" section from the instruction exactly as it appears into the newly created plan file. Do not create any example additional content.
+1.1.A. Create a corresponding task status file named `{plan_title}.tasks.md` in the same `.minions/developer_plans/` directory. Initialize this file with the high-level tasks from the action plan (once defined in step 4), each marked as "TO DO". For example:
+```markdown
+1 TO DO
+1.1 TO DO
+1.2 TO DO
+2 TO DO
+```
+
+1.2. Copy the content of the template from the "Plan file template" section from the instruction exactly as it appears into the newly created plan file (`{plan_title}.md`). Do not create any example additional content.
 
 1.3. Copy the requirements which stakeholder provided verbatim into the section "Stakeholder requirements" without any modifications.
 
@@ -224,13 +232,20 @@ ACTION:
 
 5.5. Confirm your understanding of the changes needed based on the task description, justification, and associated requirements/design decisions.
 
-5.6. If task is about identifying / changing many files, identify those files first and then add tasks for each file you identified. Mark identification task as done by adding "✅ DONE" at the end of the task line and return to step 5.2. We want to handle each file modification as separate task where feasible. Add those tasks in the current plan file.
+5.6. If task is about identifying / changing many files, identify those files first and then add tasks for each file you identified. Update the status of the identification task to "DONE" in the corresponding `{plan_title}.tasks.md` file. Then return to step 5.2. We want to handle each file modification as separate task where feasible. Add those tasks in the current plan file.
 
 5.7. Implement the changes precisely as described in the task. Do not do any refactoring to the file you edit beyond the scope of the task you're executing unless the task *is* a refactoring task. You MUST do EXACTLY what the task specifies. Unplanned refactorings require returning to Step 3/4. Adhere to project coding standards and conventions. **Ensure required security measures (e.g., input validation, parameterized queries) are correctly implemented.**
 
-5.8. If the task involves refactoring, ensure each intermediate step maintains functionality (verified by tests) or uses temporary duplication as a valid interim step if necessary. Follow the planned refactoring pattern.
+5.8. Upon successful completion and local verification of a task (as per its verification criteria in the action plan), update its status to "DONE" in the corresponding `{plan_title}.tasks.md` file. For tasks that are not yet completed or are blocked, ensure their status in `{plan_title}.tasks.md` is "TO DO". Example content for `{plan_title}.tasks.md`:
+```markdown
+1.1 DONE
+1.2 DONE
+2 TO DO
+3 TO DO
+```
+5.9. If the task involves refactoring, ensure each intermediate step maintains functionality (verified by tests) or uses temporary duplication as a valid interim step if necessary. Follow the planned refactoring pattern.
 
-5.9. For the modified/created files, check for:
+5.10. For the modified/created files, check for:
 
 a. **Correctness:** Does the code logically fulfill the requirements of the task and address identified edge cases?
 
@@ -252,27 +267,25 @@ i. Confirmation that the change explicitly addresses the intended requirement/de
 
 j. Validation against any specific assumptions confirmed in Step 3.
 
-5.10. Verify the implemented changes against the task description, requirements, and task-specific verification criteria. Run relevant local builds and unit tests. **Ensure verification includes testing for security-related behavior or testability goals.**
-
-5.11. Mark the task as done by adding "✅ DONE" at the end of the task line in the plan file.
+5.11. Verify the implemented changes against the task description, requirements, and task-specific verification criteria. Run relevant local builds and unit tests. **Ensure verification includes testing for security-related behavior or testability goals.**
 
 5.12. Check if the completed task was the last task in its logical group.
 
 5.13. If it was the last task in a logical group, perform the verification step specified for that group in the action plan. This might involve running integration tests, performing manual validation steps, checking logs, or reviewing documentation/diagrams. **This verification must include checks for security requirements and test coverage goals defined for the logical area.** If significant requirement-related gaps or design deviations are found, treat this as a verification failure.
 
-5.14. If any verification fails (either step 5.9, 5.10, or 5.13) OR if unexpected changes are needed that deviate significantly from the plan (e.g., discovering a major flaw in the design, encountering unforeseen technical blockers) OR if the plan needs updating for any reason, *including significant new understanding or design challenges emerging during implementation, or issues found during security/testability checks*, OR if stakeholder instructions change: document the specific issue/reason, stop execution, and return to step 3 to update the plan and/or prepare questions (e.g., propose a design change, report a blocker).
+5.14. If any verification fails (either step 5.9, 5.10, or 5.12) OR if unexpected changes are needed that deviate significantly from the plan (e.g., discovering a major flaw in the design, encountering unforeseen technical blockers) OR if the plan needs updating for any reason, *including significant new understanding or design challenges emerging during implementation, or issues found during security/testability checks*, OR if stakeholder instructions change: document the specific issue/reason, stop execution, and return to step 3 to update the plan and/or prepare questions (e.g., propose a design change, report a blocker).
 
 5.15. If the current task was not the last task in the logical group or project, return to step 5.2 to take the next uncompleted task.
 
-5.16. If all tasks are completed and marked as done, proceed to step 6.
+5.16. If all tasks are completed (as verified in `{plan_title}.tasks.md`), proceed to step 6.
 
 ### 6. Validate Plan Completion
 
-After all tasks are marked as done, conduct a thorough review to confirm every item is completed, documented, and verified.
+After all tasks are marked as done in `{plan_title}.tasks.md`, conduct a thorough review to confirm every item is completed, documented, and verified.
 
 ACTION:
 
-6.1. Verify that all technical tasks in the action plan are marked as done with "✅ DONE".
+6.1. Verify that all technical tasks in the action plan have their status as "DONE" in the corresponding `{plan_title}.tasks.md` file.
 
 6.2. Conduct a comprehensive validation by reviewing each original requirement and confirming it has been implemented and verified according to the plan's verification steps. **This validation must include verifying that security requirements and test coverage goals defined in the plan have been met.** Perform a final traceability check, ensuring every requirement, key design decision, clarified question, identified assumption, **and security/testability consideration** maps to implemented code and verification evidence in the plan.
 
@@ -320,7 +333,10 @@ From this point forward, treat all new statements from the stakeholder as new re
 
 ### Plan file template
 
-```md
+This template should be copied verbatim into `.minions/developer_plans/{plan_title}.md`.
+**Note:** Task statuses (DONE/TO DO) for the "Action plan" items are tracked in a separate file: `.minions/developer_plans/{plan_title}.tasks.md`.
+
+```markdown
 # Plan
 
 ## Stakeholder requirements
@@ -585,7 +601,7 @@ Form:
 
 - When working on an existing plan file, never erase or replace previous content (except for the **Action plan** section when approved by the stakeholder). All new requirements, conclusions, and questions must be appended to the existing content.
 
-- Mark completed tasks with "✅ DONE" at the end of the task line. Make sure you write it in the plan file.
+- Task completion status (e.g. "DONE", "TO DO") is tracked exclusively in the `{plan_title}.tasks.md` file associated with the plan.
 
 - Always wait for stakeholder response before proceeding to the next step.
 
