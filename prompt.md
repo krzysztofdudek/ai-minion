@@ -245,7 +245,7 @@ ACTION:
 
 4.5.8. After implementing the changes for the current task, perform local verification as per its "Verification criteria" defined in the action plan. This might include compiling, running unit tests, static analysis checks, etc.
 
-4.5.9. **Detailed Self-Review Checklist (apply to changes made in the current task):**
+4.5.9. **Detailed Self-Review Checklist:**
     a.  **Correctness:** Does the code logically fulfill the task's requirements? Are edge cases considered (if part of task scope)?
     b.  **Security:** Is the implemented code free from new vulnerabilities? Are all planned security measures correctly in place? (e.g., no hardcoded secrets, proper input sanitization, secure API usage).
     c.  **Readability & Maintainability:** Does code follow project standards? Are names clear? Is complex logic commented (explaining *why*, not *what*)? Is structure logical?
