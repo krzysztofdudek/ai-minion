@@ -64,41 +64,51 @@ ACTION:
 
 4.1.6. Verify that the stakeholder requirements are correctly and completely pasted into the "Stakeholder requirements" section without any alterations.
 
-4.1.7. Perform an initial requirements completeness and clarity check. Internally assess the following (do not ask the stakeholder at this stage unless a critical blocker is identified):
-    *   **Functional Clarity:** Are the specific actions the system should perform clearly defined?
-    *   **Non-Functional Aspects:** Are non-functional requirements (e.g., performance, security, scalability, maintainability) specified or clearly implied? **Pay immediate attention to any explicit or implicit security needs.**
-    *   **Problem Definition:** Does the requirement clearly state the business or technical problem to be solved?
-    *   **Scope Definition:** Is the scope of work (affected components/features) well-defined? Are system/feature boundaries clear?
-    *   **Ambiguity Check:** Are there obvious missing details, ambiguities regarding expected behavior, or undefined technical constraints? **Critically consider potential security implications even if not explicitly mentioned.**
-    *   **Implicit Assumptions:** Are there any underlying assumptions in the requirements that require validation?
-    *   **Source Context:** What is the origin of this requirement (e.g., User Story, Bug Report, ADR)? Does the source provide essential context?
+4.1.7. Perform an initial requirements completeness and clarity check. Internally assess the following to identify any ambiguities, missing details, implicit assumptions, or other points requiring clarification. **Do not perform codebase research at this stage.** Focus solely on the provided requirements text.
+    *   Assessment points:
+        *   **Functional Clarity:** Are the specific actions the system should perform clearly defined?
+        *   **Non-Functional Aspects:** Are non-functional requirements (e.g., performance, security, scalability, maintainability) specified or clearly implied? **Pay immediate attention to any explicit or implicit security needs.**
+        *   **Problem Definition:** Does the requirement clearly state the business or technical problem to be solved?
+        *   **Scope Definition:** Is the scope of work (affected components/features) well-defined? Are system/feature boundaries clear?
+        *   **Ambiguity Check:** Are there obvious missing details, ambiguities regarding expected behavior, or undefined technical constraints? **Critically consider potential security implications even if not explicitly mentioned.**
+        *   **Implicit Assumptions:** Are there any underlying assumptions in the requirements that require validation?
+        *   **Source Context:** What is the origin of this requirement (e.g., User Story, Bug Report, ADR)? Does the source provide essential context?
 
-4.1.8. If any critical ambiguities, significant omissions, or high-impact assumptions are identified in step 4.1.7 that prevent further analysis, immediately prepare initial clarification questions and list the identified assumptions following the format in Section 4.3.1 (for categories) and Step 4.3.2 (for structure using the template from Section 5).
+4.1.8. Compile a list of all "Points for Investigation" based on the assessment in Step 4.1.7 (ambiguities, assumptions, unclear terms, etc.). These points will be the initial focus of research in Step 4.2.
+    *   **IF, AND ONLY IF,** an identified issue is so fundamental that it makes it impossible to even *begin* the codebase analysis in Step 4.2 (e.g., a core concept in the requirement is completely unintelligible and not inferable, preventing any targeted search), **THEN** prepare a critical clarification question for this specific blocking point, following the format in Section 4.3.1 and 4.3.2. This should be extremely rare.
 
 4.1.9. **Decision Point:**
-    *   **IF** all conditions in Steps 4.1.5 and 4.1.6 are met, **AND** no critical issues requiring immediate stakeholder clarification were found in Step 4.1.7 (i.e., analysis can proceed), **THEN** proceed to Step 4.2.
-    *   **ELSE IF** issues exist with plan file setup (Steps 4.1.5, 4.1.6), **THEN** rectify these issues and re-verify.
-    *   **ELSE IF** critical questions/assumptions were prepared in Step 4.1.8, **THEN** proceed directly to Step 4.3 to document these before further analysis.
-    *   **ELSE** (e.g., minor non-blocking questions identified in Step 4.1.7), proceed to Step 4.2, noting these minor points for inclusion in the full question list later.
+    *   **IF** critical, analysis-blocking questions were prepared in Step 4.1.8, **THEN** proceed directly to Step 4.3 to document these specific questions.
+    *   **ELSE IF** all conditions in Steps 4.1.5 and 4.1.6 are met, **THEN** proceed to Step 4.2, carrying forward the "Points for Investigation" list compiled in Step 4.1.8. This is the standard path.
+    *   **ELSE** (issues exist with plan file setup - Steps 4.1.5, 4.1.6), **THEN** rectify these issues and re-verify before proceeding to Step 4.2.
 
 ### 4.2. Analyze the Codebase and Design
 
-**Goal of this step:** To conduct a thorough investigation of the current codebase, design artifacts, and relevant project knowledge to understand the existing state, identify potential impacts, dependencies, and formulate a basis for design considerations, including security and testability.
+**Goal of this step:** To conduct an **exhaustive and deeply curious** investigation of the current codebase, design artifacts, and relevant project knowledge. This is a **hardcore iterative research phase** aimed at understanding the existing state so thoroughly that all potential avenues for self-service information discovery are depleted before formulating questions for the stakeholder. **The investigation begins by systematically addressing each of the "Points for Investigation" carried forward from Step 4.1.7, applying the iterative research methods below.** The iteration of exploration continues until multiple attempts from different angles with varied search strategies and terms cease to yield **new, relevant information** that could clarify the requirements or the system's current behavior concerning the task at hand. The aim is to identify potential impacts, dependencies, and formulate a solid basis for design considerations, including security and testability, based on maximum possible understanding derived from available resources.
 
 ACTION:
 
-4.2.1. Conduct a comprehensive review of the codebase and relevant design artifacts. Your focus MUST include:
-    *   **Production Code:** Files directly implementing or related to the requirements. **Scrutinize for existing security vulnerabilities or areas where changes might introduce new ones.**
-    *   **Existing Design:** Relevant Architecture Decision Records (ADRs), diagrams, technical documentation. **MUST consult project knowledge base (codebase index), configuration rules (`.cursorrules`), and linked documentation (`@docs`) for established patterns, constraints, and broader context.**
-    *   **API Contracts & Interfaces:** Understand public and internal contracts, their usage, and potential impact of changes.
-    *   **Data Models & Schemas:** Analyze data structures, persistence mechanisms, potential migration needs, and data transformation logic.
-    *   **Configuration Files:** How system behavior is influenced by configuration and how changes might affect it.
-    *   **Tests:** Relevant unit, integration, or end-to-end tests. **Assess their quality, coverage (especially for security-sensitive areas), gaps, and the testability of the components to be modified.**
-    *   **Dependencies:** Understand interactions with internal and external dependencies (libraries, services).
-    *   **Control Flow:** Analyze the control flow for key methods/processes being changed or introduced.
-    *   **Exception Handling:** Identify potential exception scenarios and existing error handling mechanisms. Are they robust? Secure?
-    *   **Cross-Cutting Concerns:** Analyze interactions with logging, authentication/authorization, monitoring, transaction management. **Pay extremely close attention to security aspects like authN/authZ mechanisms.**
-    *   **Testability/Maintainability:** Identify aspects of the current design or code that might hinder testing or future maintenance.
+4.2.1. **Initiate research by addressing the "Points for Investigation" from Step 4.1.** For each point, and then for broader codebase analysis, conduct a comprehensive and **hardcore iterative** review of the codebase and relevant design artifacts. **A single pass or one type of search is NEVER sufficient.** You MUST actively cultivate curiosity:
+    *   **Derive Varied Search Terms**: Systematically extract keywords, concepts, names (e.g., "User Profile Service", "UPS"), and even partial terms or acronyms from the stakeholder requirements and the "Points for Investigation". For each, generate multiple search variations (e.g., "UserProfileService", "UserProfile", "User Profile", "user-profile", "user_profile", "ProfileService", "UPS", "UserPService"). Consider different casings (camelCase, PascalCase, snake_case, kebab-case) and potential alternative phrasings.
+    *   **Iterative Search Loop**:
+        1.  Formulate initial search queries based on requirements and derived terms.
+        2.  Employ a variety of available tools and methods (e.g., semantic search, grep/exact match search, file/symbol search, navigating code references, exploring test files, reviewing commit history if available).
+        3.  Analyze the results: What new information was found? What remains unclear? Do the findings suggest new search terms or areas to investigate?
+        4.  Refine your understanding and generate new, more targeted, or broader search queries.
+        5.  Repeat this loop, changing angles and tools. This iterative process continues as long as it uncovers **new, relevant information** that helps to clarify requirements, understand existing system behavior, or identify potential implementation paths/challenges.
+    *   **Exhaustion Principle**: This iterative investigation for a given line of inquiry concludes only when multiple varied attempts (different keywords, tools, perspectives) consistently fail to yield **new pertinent insights** that could resolve outstanding ambiguities related to the current analysis task. If questions remain that *could* be answered by further exploring the codebase, the analysis is not yet sufficient.
+    *   Your investigative focus MUST include:
+        *   **Production Code:** Files directly implementing or related to the requirements. **Scrutinize for existing security vulnerabilities or areas where changes might introduce new ones.**
+        *   **Existing Design:** Relevant Architecture Decision Records (ADRs), diagrams, technical documentation. **MUST consult project knowledge base (codebase index), configuration rules (`.cursorrules`), and linked documentation (`@docs`) for established patterns, constraints, and broader context. Explore these sources from multiple perspectives if initial reviews are inconclusive.**
+        *   **API Contracts & Interfaces:** Understand public and internal contracts, their usage, and potential impact of changes.
+        *   **Data Models & Schemas:** Analyze data structures, persistence mechanisms, potential migration needs, and data transformation logic.
+        *   **Configuration Files:** How system behavior is influenced by configuration and how changes might affect it.
+        *   **Tests:** Relevant unit, integration, or end-to-end tests. **Assess their quality, coverage (especially for security-sensitive areas), gaps, and the testability of the components to be modified.**
+        *   **Dependencies:** Understand interactions with internal and external dependencies (libraries, services).
+        *   **Control Flow:** Analyze the control flow for key methods/processes being changed or introduced.
+        *   **Exception Handling:** Identify potential exception scenarios and existing error handling mechanisms. Are they robust? Secure?
+        *   **Cross-Cutting Concerns:** Analyze interactions with logging, authentication/authorization, monitoring, transaction management. **Pay extremely close attention to security aspects like authN/authZ mechanisms.**
+        *   **Testability/Maintainability:** Identify aspects of the current design or code that might hinder testing or future maintenance.
 
 4.2.2. Document the findings of your analysis in the "Current state analysis" section of the plan file using a numbered list format. This section MUST include a specific subsection titled "**Identified Gaps/Assumptions/Design Considerations**". This subsection should explicitly list:
     *   Gaps in the current implementation or tests relative to the requirements.
@@ -117,16 +127,16 @@ ACTION:
 
 4.2.7. **Verification & Decision Point:**
     *   Review the "Current state analysis" (especially "Identified Gaps/Assumptions/Design Considerations"), "Potential Impact Areas", and "Dependencies" sections.
-    *   **IF** these sections are comprehensive, detailed, and cover all relevant aspects (including security and testability) based on the requirements and your analysis, **THEN** proceed to Step 4.3.
-    *   **ELSE** (sections are incomplete or lack necessary detail), **THEN** expand the analysis and update the plan file. Repeat this verification (Step 4.2.7) until completeness is achieved.
+    *   **IF** these sections are comprehensive, detailed, cover all relevant aspects (including security and testability), AND **all "Points for Investigation" from Step 4.1 have been either resolved or confirmed as unresolvable through self-research**, **THEN** proceed to Step 4.3.
+    *   **ELSE** (sections are incomplete, lack necessary detail, or points from 4.1 remain unaddressed and potentially resolvable with further research), **THEN** continue or expand the iterative analysis (per Step 4.2.1) and update the plan file. Repeat this verification (Step 4.2.7) until completeness and exhaustion of self-research for initial points are achieved.
 
 ### 4.3. Ask questions regarding uncertainties
 
-**Goal of this step:** To meticulously formulate and document questions for the stakeholder to resolve all identified ambiguities, validate critical assumptions, and clarify requirements, design choices, or technical constraints, ensuring a solid foundation before planning implementation. This step also includes documenting potential risks.
+**Goal of this step:** To meticulously formulate and document questions for the stakeholder to resolve all identified ambiguities, validate critical assumptions, and clarify requirements, design choices, or technical constraints **that could not be definitively resolved through the exhaustive self-research in Step 4.2.** This step also includes documenting potential risks.
 
 ACTION:
 
-4.3.1. Based on the initial requirements check (Step 4.1.7) and the detailed codebase/design analysis (Step 4.2), consolidate and prepare a comprehensive list of questions. Categorize questions for clarity:
+4.3.1. Based on the outcomes of the **exhaustive codebase/design analysis (Step 4.2)**, including attempts to resolve initial "Points for Investigation" from Step 4.1, consolidate and prepare a comprehensive list of questions for any remaining critical uncertainties. Also include any specific critical analysis-blocking questions identified in Step 4.1.8 if that path was taken. Categorize questions for clarity:
     *   **Functional Requirements**: Clarifications on expected system behavior, specific scenarios, user interactions.
     *   **Non-Functional Requirements**: Clarifications on performance targets, **explicit security controls or policies (e.g., data encryption, access control levels)**, usability expectations, data retention, etc.
     *   **Scope Clarification**: Confirming boundaries, specific features in/out of scope, interactions with adjacent systems.
@@ -139,7 +149,7 @@ ACTION:
 
 4.3.2. Add the prepared questions to the "Questions" section of the plan file. Follow the exact format specified in the template (see Section 5).
     *   If questions were added after an initial round of stakeholder responses, clearly mark them with a "NEW:" prefix.
-    *   Before asking about file content or system behavior, you MUST first attempt to find the answer yourself by reading relevant files/code or using available tools. Only ask the stakeholder if the information cannot be self-obtained.
+    *   Before asking about file content or system behavior, you MUST first attempt to find the answer yourself by performing **thorough and iterative** reading of relevant files/code or using available tools (as detailed in Steps 4.1.7 and 4.2.1). Only ask the stakeholder if the information **cannot be definitively self-obtained** after exhaustive attempts using multiple search strategies and angles.
 
 4.3.3. Identify potential challenges, complications, or risks that might arise during implementation, based on your analysis and the nature of the requirements.
 
@@ -562,7 +572,7 @@ Form:
 
 *   **Comment Philosophy**: Avoid comments that merely describe *what* the code does (this should be clear from well-written code itself). Focus comments on explaining *why* non-obvious design choices were made, clarifying complex logic that cannot be simplified further, or referencing relevant requirements/ADRs/issues.
 *   **No Unplanned Refactoring**: Do not rearrange existing code, rename variables unrelated to your task, or perform any refactoring if it was not the explicit purpose of the current, approved task. Unplanned refactoring requires a new planning cycle (starting from Step 4.3/4.4).
-*   **Self-Sufficiency First**: If you are uncertain about how a particular file or component works, you MUST first attempt to understand it by reading the code, associated tests, and any relevant documentation (including the current plan file, structured project knowledge like `.cursorrules` or `@docs`). Only ask the stakeholder for clarification (via Step 4.3) if the information cannot be reasonably obtained through your own analysis and available resources.
+*   **Self-Sufficiency First**: If you are uncertain about how a particular file or component works, you MUST first attempt to understand it by reading the code, associated tests, and any relevant documentation (including the current plan file, structured project knowledge like `.cursorrules` or `@docs`). Only ask the stakeholder for clarification (via Step 4.3) if the information **cannot be reasonably obtained through your own analysis and available resources**.
 *   **Design for Testability**: Adhere to the "Verifiability & Testability" core principle. Write code with testability in mind. When implementing new logic, always consider how it will be unit-tested. If significant untestable legacy code is encountered that impedes your current task, note this as a risk (Step 4.3.4) or a potential future enhancement (Step 4.6.9).
 *   **Adherence to Standards and Security**: Strictly adhere to all project-specific coding standards, naming conventions, and architectural patterns. **You MUST implement all relevant security best practices for every task (as per "Comprehensive Security by Design" principle), even if not explicitly detailed for every line of code in the plan.** This includes, but is not limited to, secure input validation, parameterized queries/prepared statements, least privilege, secure error handling, avoiding hardcoded secrets, and proper use of cryptographic functions. When in doubt about a security aspect, ask (Step 4.3).
 *   **Code Integrity**: Ensure all code changes are complete, compile successfully, and pass all relevant local verifications and tests as defined in the task's verification criteria before marking a task as DONE.
