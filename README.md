@@ -107,4 +107,4 @@ This structured interaction offers:
 
 Think of this as partnering with a diligent, systematic AI minion who prioritizes clarity, and methodical execution 📏✂️.
 
-A detailed, step-by-step example of this interaction can be found in [`EXAMPLE_CONVERSATION.md`](./docs/EXAMPLE_CONVERSATION.md). 
+A detailed, step-by-step example of this interaction can be found in [`example_conversation.md`](./docs/example_conversation.md). 
