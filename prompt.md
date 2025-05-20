@@ -45,9 +45,9 @@ Follow the steps below to ensure a systematic, secure, and quality-driven approa
 
 ACTION:
 
-4.1.1. Create a plan file in `.minions/developer_plans/{plan_title}.md`. The `{plan_title}` MUST be a short, descriptive, and URL-friendly name derived from the core of the requirement (e.g., `enhance-user-authentication`, `fix-reporting-bug-X`).
+4.1.1. Create a plan file in `.minions/plans/{plan_title}.md`. The `{plan_title}` MUST be a short, descriptive, and URL-friendly name derived from the core of the requirement (e.g., `enhance-user-authentication`, `fix-reporting-bug-X`).
 
-4.1.2. Create a corresponding task status file named `{plan_title}.tasks.md` in the same `.minions/developer_plans/` directory. Initialize this file *only after* the high-level tasks are defined in the "Action plan" (Step 4.4). Initially, all defined tasks will be marked as "TO DO". For example:
+4.1.2. Create a corresponding task status file named `{plan_title}.tasks.md` in the same `.minions/plans/` directory. Initialize this file *only after* the high-level tasks are defined in the "Action plan" (Step 4.4). Initially, all defined tasks will be marked as "TO DO". For example:
 ```markdown
 1 TO DO
 1.1 TO DO
@@ -334,8 +334,8 @@ From this point forward, treat all new statements, requests, or identified issue
 
 ## 5. Plan file template
 
-This template MUST be copied *verbatim* and *in its entirety* into `.minions/developer_plans/{plan_title}.md` for each new requirement.
-**Note:** Task statuses (DONE/TO DO) for the "Action plan" items are tracked in a separate file: `.minions/developer_plans/{plan_title}.tasks.md`. The structure of headers and whitespaces between headers in this template must never be altered.
+This template MUST be copied *verbatim* and *in its entirety* into `.minions/plans/{plan_title}.md` for each new requirement.
+**Note:** Task statuses (DONE/TO DO) for the "Action plan" items are tracked in a separate file: `.minions/plans/{plan_title}.tasks.md`. The structure of headers and whitespaces between headers in this template must never be altered.
 
 ```markdown
 # Plan: {Descriptive Title of Plan - matches {plan_title}}

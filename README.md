@@ -2,11 +2,11 @@
 
 Welcome! 👋 This repository showcases a specialized set of instructions, `prompt.md`, designed to empower AI agents (like those in Cursor or similar environments) to perform complex tasks with enhanced systematism, predictability, and effectiveness.
 
-The primary goal is to demonstrate and refine a detailed "persona" or rule set that guides an AI agent acting as a versatile **AI Worker/Minion**. This is achieved by providing a comprehensive playbook, `prompt.md`, which defines a specific role, a rigorous workflow, and precise interaction patterns for tackling various assignments. 🧠
+The primary goal is to demonstrate and refine a detailed "persona" or rule set that guides an AI agent acting as a versatile **AI Minion**. This is achieved by providing a comprehensive playbook, `prompt.md`, which defines a specific role, a rigorous workflow, and precise interaction patterns for tackling various assignments. 🧠
 
 ## The Core: `prompt.md` 🧑‍🔧
 
-The cornerstone of this repository is [`prompt.md`](./prompt.md). This document meticulously outlines a strict, step-by-step process for the AI worker, covering:
+The cornerstone of this repository is [`prompt.md`](./prompt.md). This document meticulously outlines a strict, step-by-step process for the AI minion, covering:
 
 *   **Requirement Analysis:** Understanding stakeholder needs and performing initial clarity checks.
 *   **Context & System Review:** Thoroughly investigating existing systems, codebase (if applicable), or relevant information.
@@ -84,13 +84,13 @@ The `prompt.md` is designed to be used with advanced AI assistants to guide them
 
 These documentation files provide detailed steps for each approach.
 
-## 🤝 Interacting with the AI Worker: A Collaborative Approach
+## 🤝 Interacting with the AI Minion: A Collaborative Approach
 
 Working with an AI agent powered by `prompt.md` is a highly interactive and collaborative dialogue 💬. This ensures the AI fully understands your needs and provides full transparency into its process.
 
 The interaction model is as follows:
 
-1.  **Your Request, Its Plan:** You provide a requirement 📝. The AI Worker, following `prompt.md`, first creates a dedicated plan file (e.g., in `.minions/worker_plans/your_plan_title.md`). This file becomes the central hub 🏡 for the entire task.
+1.  **Your Request, Its Plan:** You provide a requirement 📝. The AI Minion, following `prompt.md`, first creates a dedicated plan file (e.g., in `.minions/plans/your_plan_title.md`). This file becomes the central hub 🏡 for the entire task.
 2.  **Deep Dive & Intelligent Questions:** The agent meticulously analyzes your request 🕵️‍♂️, examines the existing context (codebase, documents, etc.), and identifies potential ambiguities or risks. It then populates the plan file with specific, contextual questions 🤔. This is an intelligent feedback mechanism to avoid misunderstandings.
 3.  **Your Insights are Key:** You, as the stakeholder, review these questions directly in the plan file and provide answers 🗣️. This iterative Q&A is crucial for shared understanding.
 4.  **Transparent Action Planning:** Once clarity is achieved, the agent proposes a detailed, step-by-step action plan 🗺️ within the same plan file.
@@ -105,6 +105,6 @@ This structured interaction offers:
 *   **Greater Control:** Key decisions remain with you 🕹️.
 *   **Higher Quality & Secure Outcomes:** Addressing issues early ensures the result meets precise requirements and relevant standards 🎯.
 
-Think of this as partnering with a diligent, systematic AI worker who prioritizes clarity, and methodical execution 📏✂️.
+Think of this as partnering with a diligent, systematic AI minion who prioritizes clarity, and methodical execution 📏✂️.
 
 A detailed, step-by-step example of this interaction can be found in [`EXAMPLE_CONVERSATION.md`](./docs/EXAMPLE_CONVERSATION.md). 

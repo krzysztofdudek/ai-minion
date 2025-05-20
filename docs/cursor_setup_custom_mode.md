@@ -1,10 +1,10 @@
 # Using `prompt.md` with Cursor: Custom Mode Setup
 
-This document outlines a method to integrate the `prompt.md` AI worker persona with Cursor by creating a dedicated "Custom Mode". This provides a more integrated experience, making it easy to switch to the detailed operational mode without repeatedly pasting the prompt.
+This document outlines a method to integrate the `prompt.md` AI minion persona with Cursor by creating a dedicated "Custom Mode". This provides a more integrated experience, making it easy to switch to the detailed operational mode without repeatedly pasting the prompt.
 
 ## Method: Creating a "Minion" Custom Mode
 
-For a seamless experience, you can create a dedicated Custom Mode in Cursor to embody the "AI Worker" persona defined in `prompt.md`.
+For a seamless experience, you can create a dedicated Custom Mode in Cursor to embody the "AI Minion" persona defined in `prompt.md`.
 
 As per the [Cursor Custom Modes documentation](https://docs.cursor.com/chat/custom-modes), you can create a new mode with specific tools and instructions.
 
@@ -17,7 +17,7 @@ As per the [Cursor Custom Modes documentation](https://docs.cursor.com/chat/cust
     *(Refer to the visual layout for creating a new mode, where you can configure its name, icon, tools, and instructions.)*
 
 4.  **Configure the Mode:**
-    *   **Enter a name:** Call it "Minion", "AI Worker", or a name of your choice.
+    *   **Enter a name:** Call it "Minion", "AI Minion", or a name of your choice.
     *   **Icon (Optional):** Choose an icon if you like.
     *   **Model:** Select your preferred model (e.g., Claude 3.5 Sonnet, GPT-4o, etc.).
     *   **Tools:** Enable the tools you want this mode to have access to. For the full `prompt.md` experience, you'd likely want most, if not all, tools enabled (Search, Edit, Run Commands, etc.). The `prompt.md` itself guides the AI on *how* and *when* to consider using tools.
@@ -40,4 +40,4 @@ As per the [Cursor Custom Modes documentation](https://docs.cursor.com/chat/cust
 *   **Consistency:** Ensures the AI always operates under the full `prompt.md` guidelines when this mode is active.
 *   **Tailored Toolset:** You can pre-configure the exact set of tools available to the "Minion" persona.
 
-This method provides a powerful and convenient way to integrate the comprehensive `prompt.md` directly into your Cursor workflow for specialized tasks, allowing for quick activation of the full AI Worker persona. 
+This method provides a powerful and convenient way to integrate the comprehensive `prompt.md` directly into your Cursor workflow for specialized tasks, allowing for quick activation of the full AI Minion persona. 

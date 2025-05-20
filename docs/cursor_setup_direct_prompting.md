@@ -1,10 +1,10 @@
 # Using `prompt.md` with Cursor: Direct Prompting (Simplest Method)
 
-This document outlines the simplest way to use the full `prompt.md` AI worker persona with Cursor by directly pasting its content into the chat or using the `@` mention feature.
+This document outlines the simplest way to use the full `prompt.md` AI minion persona with Cursor by directly pasting its content into the chat or using the `@` mention feature.
 
 ## Method: Direct Pasting or `@` Mention of `prompt.md`
 
-This approach is straightforward and ensures Cursor receives the complete set of instructions for a specific, complex task when you need it to adopt the full "AI Worker" persona.
+This approach is straightforward and ensures Cursor receives the complete set of instructions for a specific, complex task when you need it to adopt the full "AI Minion" persona.
 
 1.  **Open `prompt.md`:**
     *   Locate and open the `prompt.md` file from this repository.
@@ -25,12 +25,12 @@ This approach is straightforward and ensures Cursor receives the complete set of
 
 > **User:** (Pastes entire content of `prompt.md`)
 >
-> **User:** Now, acting as the AI Worker defined above, I need you to analyze the `PaymentGateway` interface and propose a plan to integrate a new payment provider.
+> **User:** Now, acting as the AI Minion defined above, I need you to analyze the `PaymentGateway` interface and propose a plan to integrate a new payment provider.
 
 **Example Interaction (`@` Mention):**
 
 > **User:** @prompt.md
-> Please act as the AI Worker defined in the referenced prompt. I need you to design the database schema for a new inventory management system.
+> Please act as the AI Minion defined in the referenced prompt. I need you to design the database schema for a new inventory management system.
 
 ## When to Use This Method
 

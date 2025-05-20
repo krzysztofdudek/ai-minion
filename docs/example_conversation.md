@@ -1,37 +1,37 @@
 # Example Conversation: Implementing an Order Processing Feature
 
-This document weaves a story illustrating a hypothetical, step-by-step interaction between a **Stakeholder (User)** and an **AI Worker** (guided by the principles in `prompt.md`) as they collaborate to implement a new feature in an order processing system.
+This document weaves a story illustrating a hypothetical, step-by-step interaction between a **Stakeholder (User)** and an **AI Minion** (guided by the principles in `prompt.md`) as they collaborate to implement a new feature in an order processing system.
 
 ## Workflow Overview for "Flag Order for Investigation" Feature
 
 ```mermaid
 sequenceDiagram
     participant Stakeholder
-    participant AI Worker
+    participant AI Minion
 
-    Stakeholder->>AI Worker: I need a feature to flag orders for investigation.
-    activate AI Worker
-    AI Worker-->>AI Worker: Analyzes request, prepares for planning.
+    Stakeholder->>AI Minion: I need a feature to flag orders for investigation.
+    activate AI Minion
+    AI Minion-->>AI Minion: Analyzes request, prepares for planning.
     alt Clarification Needed
-        AI Worker->>Stakeholder: To clarify: How should the flag work? How to store reason notes? How is an order unflagged?
+        AI Minion->>Stakeholder: To clarify: How should the flag work? How to store reason notes? How is an order unflagged?
         activate Stakeholder
-        Stakeholder->>AI Worker: Answers regarding flag type, note storage, and initial unflagging process.
+        Stakeholder->>AI Minion: Answers regarding flag type, note storage, and initial unflagging process.
         deactivate Stakeholder
     end
     opt Further Clarification on Unflagging
-        AI Worker->>Stakeholder: Regarding unflagging: What about order status reversion?
+        AI Minion->>Stakeholder: Regarding unflagging: What about order status reversion?
         activate Stakeholder
-        Stakeholder->>AI Worker: Clarifies desired status after unflagging.
+        Stakeholder->>AI Minion: Clarifies desired status after unflagging.
         deactivate Stakeholder
     end
-    AI Worker-->>AI Worker: Develops detailed Action Plan for the "Flag Order" feature.
-    AI Worker->>Stakeholder: The Action Plan for the "Flag Order" feature is ready for your review.
+    AI Minion-->>AI Minion: Develops detailed Action Plan for the "Flag Order" feature.
+    AI Minion->>Stakeholder: The Action Plan for the "Flag Order" feature is ready for your review.
     activate Stakeholder
-    Stakeholder->>AI Worker: The Action Plan is approved. Please proceed.
+    Stakeholder->>AI Minion: The Action Plan is approved. Please proceed.
     deactivate Stakeholder
-    AI Worker-->>AI Worker: Implements the feature (DB, services, API, tests).
-    AI Worker->>Stakeholder: The "Flag Order for Investigation" feature is complete. I've prepared a summary.
-    deactivate AI Worker
+    AI Minion-->>AI Minion: Implements the feature (DB, services, API, tests).
+    AI Minion->>Stakeholder: The "Flag Order for Investigation" feature is complete. I've prepared a summary.
+    deactivate AI Minion
 ```
 
 ## Scenario Overview
@@ -44,19 +44,19 @@ Our story centers around a **Stakeholder Goal:** to enhance an existing Python-b
 
 ### Chapter 1: The Initial Spark – A New Feature is Requested
 
-The collaboration began when the Stakeholder approached the AI Worker with a clear need:
+The collaboration began when the Stakeholder approached the AI Minion with a clear need:
 
-> **Stakeholder:** "Hi AI Worker, I need a new feature for our order management system. CSRs should be able to flag an order that needs investigation. When an order is flagged, it shouldn't be processed for shipment. They also need to add a reason for flagging it."
+> **Stakeholder:** "Hi AI Minion, I need a new feature for our order management system. CSRs should be able to flag an order that needs investigation. When an order is flagged, it shouldn't be processed for shipment. They also need to add a reason for flagging it."
 
-The AI Worker, ever diligent, immediately set to work. Its first task was to internalize the core of the request. It then meticulously prepared the ground for the project by creating the necessary documentation: a central plan file named `flag-order-investigation.md` (housed in `.minions/worker_plans/`) and a companion task-tracking file, `flag-order-investigation.tasks.md`. The standard plan template was dutifully applied, and the Stakeholder's request was carefully transcribed verbatim into the "Stakeholder requirements" section of the main plan. As a final preparatory step, the AI Worker performed an initial requirements completeness check, following the robust protocol outlined in its guiding principles (`prompt.md`, Step 4.1.7).
+The AI Minion, ever diligent, immediately set to work. Its first task was to internalize the core of the request. It then meticulously prepared the ground for the project by creating the necessary documentation: a central plan file named `flag-order-investigation.md` (housed in `.minions/plans/`) and a companion task-tracking file, `flag-order-investigation.tasks.md`. The standard plan template was dutifully applied, and the Stakeholder's request was carefully transcribed verbatim into the "Stakeholder requirements" section of the main plan. As a final preparatory step, the AI Minion performed an initial requirements completeness check, following the robust protocol outlined in its guiding principles (`prompt.md`, Step 4.1.7).
 
-With these foundations in place, the AI Worker was ready to delve deeper.
+With these foundations in place, the AI Minion was ready to delve deeper.
 
 ---
 
 ### Chapter 2: Exploration and Discovery – Analyzing the Landscape
 
-The AI Worker then embarked on a comprehensive analysis of the system's (hypothetical) existing codebase. This involved a careful review of key components like `OrderService.py` and `OrderModel.py`, an examination of the database schema, and any relevant API endpoints concerning orders. It also consulted any available internal knowledge bases or rules that might shed light on the current architecture.
+The AI Minion then embarked on a comprehensive analysis of the system's (hypothetical) existing codebase. This involved a careful review of key components like `OrderService.py` and `OrderModel.py`, an examination of the database schema, and any relevant API endpoints concerning orders. It also consulted any available internal knowledge bases or rules that might shed light on the current architecture.
 
 As it explored, its insights, questions, and initial design thoughts began to crystallize within the `flag-order-investigation.md` plan. This document became a living record of its analytical journey. Here's a glimpse into its evolving understanding:
 
@@ -64,7 +64,7 @@ As it explored, its insights, questions, and initial design thoughts began to cr
 >
 > ## Stakeholder requirements
 >
-> "Hi AI Worker, I need a new feature for our order management system. CSRs should be able to flag an order that needs investigation. When an order is flagged, it shouldn't be processed for shipment. They also need to add a reason for flagging it."
+> "Hi AI Minion, I need a new feature for our order management system. CSRs should be able to flag an order that needs investigation. When an order is flagged, it shouldn't be processed for shipment. They also need to add a reason for flagging it."
 >
 > ## Current state analysis
 >
@@ -90,7 +90,7 @@ As it explored, its insights, questions, and initial design thoughts began to cr
 > 2.  Database schema for `orders` table (new field(s))
 > 3.  `services/order_service.py` (logic to flag, unflag, and check flag before shipment)
 > 4.  `api/v1/orders_api.py` (new endpoint or modification to existing ones for CSRs)
-> 5.  Admin Panel (Frontend changes will be needed - outside AI Worker's direct scope but important context)
+> 5.  Admin Panel (Frontend changes will be needed - outside AI Minion's direct scope but important context)
 > 6.  Unit tests for `OrderService` and API endpoints.
 >
 > ### Dependencies
@@ -103,7 +103,7 @@ As it explored, its insights, questions, and initial design thoughts began to cr
 
 ### Chapter 3: Seeking Clarity – The First Round of Questions
 
-Having thoroughly analyzed the request and the existing system, the AI Worker identified several areas needing further input from the Stakeholder. It carefully formulated a set of questions within the `flag-order-investigation.md` plan, also noting potential risks.
+Having thoroughly analyzed the request and the existing system, the AI Minion identified several areas needing further input from the Stakeholder. It carefully formulated a set of questions within the `flag-order-investigation.md` plan, also noting potential risks.
 
 The content of the plan now included:
 > ## Questions
@@ -130,19 +130,19 @@ The content of the plan now included:
 >
 > ### Potential Risks
 >
-> 1.  (Risk 1 - **Scope Creep with Admin Panel**): If the Admin Panel frontend changes are complex, they might delay full feature rollout. Mitigation: Backend API will be designed to be clear and simple for frontend integration. This risk is primarily for stakeholder awareness as frontend is out of scope for AI Worker.
+> 1.  (Risk 1 - **Scope Creep with Admin Panel**): If the Admin Panel frontend changes are complex, they might delay full feature rollout. Mitigation: Backend API will be designed to be clear and simple for frontend integration. This risk is primarily for stakeholder awareness as frontend is out of scope for AI Minion.
 > 2.  (Risk 2 - **Complex State Management**): If a new formal status is chosen and interacts with many existing order processes (promotions, inventory), it could lead to complex state logic. Mitigation: Propose a boolean flag first if acceptable, or carefully map all state transitions if a new status is required. Ensure thorough testing.
 > 3.  (Risk 3 - **Data Integrity for Notes**): If multiple CSRs can edit a note simultaneously or if note history is complex. Mitigation: For V1, assume a single, latest note is sufficient unless specified otherwise. If history is needed, it requires more design.
 
-With these questions documented, the AI Worker reached out:
+With these questions documented, the AI Minion reached out:
 
-> **AI Worker:** "I have analyzed the request to add an order investigation flag feature and have prepared some questions to clarify the requirements. Please review the `flag-order-investigation.md` file in the `.minions/worker_plans/` directory, specifically the 'Questions' and 'Potential Risks' sections, and provide your responses there. I will await your input before proceeding to the action plan."
+> **AI Minion:** "I have analyzed the request to add an order investigation flag feature and have prepared some questions to clarify the requirements. Please review the `flag-order-investigation.md` file in the `.minions/plans/` directory, specifically the 'Questions' and 'Potential Risks' sections, and provide your responses there. I will await your input before proceeding to the action plan."
 
 ---
 
 ### Chapter 4: The Dialogue – Refining Understanding
 
-The Stakeholder then reviewed the questions posed by the AI Worker directly within the `flag-order-investigation.md` document and provided their responses:
+The Stakeholder then reviewed the questions posed by the AI Minion directly within the `flag-order-investigation.md` document and provided their responses:
 
 > ## Questions
 >
@@ -162,9 +162,9 @@ The Stakeholder then reviewed the questions posed by the AI Worker directly with
 >     ...
 >     **Stakeholder response:** "Correct, only CSR roles should have this capability."
 
-Upon reviewing these answers, the AI Worker noted that the Stakeholder's response to the third question—about reverting to the previous order status—introduced a potential complexity. True to its programming to seek explicit clarity, it decided a follow-up question was necessary.
+Upon reviewing these answers, the AI Minion noted that the Stakeholder's response to the third question—about reverting to the previous order status—introduced a potential complexity. True to its programming to seek explicit clarity, it decided a follow-up question was necessary.
 
-The AI Worker updated the plan file again:
+The AI Minion updated the plan file again:
 > ## Questions
 >
 > ...
@@ -187,7 +187,7 @@ This iterative dialogue ensured both parties were aligned before any concrete pl
 
 ### Chapter 5: The Blueprint – Crafting the Action Plan
 
-With all ambiguities resolved, the AI Worker now had the clarity needed to construct a comprehensive action plan. This detailed blueprint, also documented within `flag-order-investigation.md`, outlined every step required to bring the feature to life.
+With all ambiguities resolved, the AI Minion now had the clarity needed to construct a comprehensive action plan. This detailed blueprint, also documented within `flag-order-investigation.md`, outlined every step required to bring the feature to life.
 
 Here is what the action plan section of the plan file looked like:
 > ## Action plan
@@ -311,11 +311,11 @@ Here is what the action plan section of the plan file looked like:
 >     *   Manually test endpoints with Postman/curl, checking responses and DB state changes.
 >     *   Review API security (auth, input validation if any beyond reason_note).
 
-The AI Worker then meticulously populated the `flag-order-investigation.tasks.md` file, listing all task IDs (from 1.1 through 3.3), each initially marked as "TO DO".
+The AI Minion then meticulously populated the `flag-order-investigation.tasks.md` file, listing all task IDs (from 1.1 through 3.3), each initially marked as "TO DO".
 
 With the comprehensive plan ready, it was time to formally present it to the Stakeholder:
 
-> **AI Worker:** "I have prepared a detailed action plan in `flag-order-investigation.md` based on our discussion. Please review it. I will begin implementation once I have your approval."
+> **AI Minion:** "I have prepared a detailed action plan in `flag-order-investigation.md` based on our discussion. Please review it. I will begin implementation once I have your approval."
 
 ---
 
@@ -325,25 +325,25 @@ The Stakeholder carefully reviewed the action plan. Satisfied with its thoroughn
 
 > **Stakeholder:** "The action plan looks comprehensive and addresses all points. Approved. Please proceed."
 
-Upon receiving the green light, the AI Worker commenced the execution phase, tackling each task sequentially as outlined in the plan.
+Upon receiving the green light, the AI Minion commenced the execution phase, tackling each task sequentially as outlined in the plan.
 
 *   **For each task (e.g., starting with Task 1.1):**
-    1.  The AI Worker would first consult the `flag-order-investigation.md` to understand the task's specifics.
+    1.  The AI Minion would first consult the `flag-order-investigation.md` to understand the task's specifics.
     2.  It would then verify that all prerequisite tasks were marked "DONE" in the `.tasks.md` file.
     3.  The core work of implementation would follow (e.g., modifying `models/order_model.py`).
     4.  Local verification, such as ensuring code compilation and task-specific checks, would be performed.
     5.  A self-review against its internal checklist (as per `prompt.md` Step 4.5.9) would ensure quality.
-    6.  If all checks passed, the AI Worker would update the task's status to "DONE" in `flag-order-investigation.tasks.md`.
+    6.  If all checks passed, the AI Minion would update the task's status to "DONE" in `flag-order-investigation.tasks.md`.
 *   This methodical process would continue for all tasks (1.2, 1.3, and so on).
-*   After completing all tasks within a logical group (like "Database & Model Changes" after Task 1.3), the AI Worker would perform the broader "Verification (Logical Area)" steps defined in the plan for that group.
+*   After completing all tasks within a logical group (like "Database & Model Changes" after Task 1.3), the AI Minion would perform the broader "Verification (Logical Area)" steps defined in the plan for that group.
 *   This systematic execution would proceed through all logical areas: Service Layer and then the API Layer.
-*   Crucially, if any task failed verification or its self-review, or if a planned approach encountered unforeseen problems, the AI Worker was programmed to pause. It would document the issue thoroughly and, depending on the nature of the problem, either return to the Clarification Questions phase (Step 4.3 in `prompt.md`) or the Plan Modification phase (Step 4.4), re-engaging the Stakeholder for input.
+*   Crucially, if any task failed verification or its self-review, or if a planned approach encountered unforeseen problems, the AI Minion was programmed to pause. It would document the issue thoroughly and, depending on the nature of the problem, either return to the Clarification Questions phase (Step 4.3 in `prompt.md`) or the Plan Modification phase (Step 4.4), re-engaging the Stakeholder for input.
 
 ---
 
 ### Chapter 7: The Culmination – Completion and Final Report
 
-After diligently working through all tasks and successfully passing all verifications, the `flag-order-investigation.tasks.md` file showed every item marked "DONE". The AI Worker then moved to the final step: compiling the "Implementation Summary" and "Testing Notes" sections directly within the `flag-order-investigation.md` plan file.
+After diligently working through all tasks and successfully passing all verifications, the `flag-order-investigation.tasks.md` file showed every item marked "DONE". The AI Minion then moved to the final step: compiling the "Implementation Summary" and "Testing Notes" sections directly within the `flag-order-investigation.md` plan file.
 
 This final report in the plan file read:
 ```markdown
@@ -394,10 +394,10 @@ This final report in the plan file read:
     *   **Expected Results**: API should return 403 Forbidden or 401 Unauthorized.
 ```
 
-With the feature fully implemented and documented, the AI Worker informed the Stakeholder:
+With the feature fully implemented and documented, the AI Minion informed the Stakeholder:
 
-> **AI Worker:** "The implementation of the order investigation flag feature is now complete as per the approved plan. The `Implementation Summary` and `Testing Notes` have been added to `flag-order-investigation.md`. The system is ready for your review or further testing."
+> **AI Minion:** "The implementation of the order investigation flag feature is now complete as per the approved plan. The `Implementation Summary` and `Testing Notes` have been added to `flag-order-investigation.md`. The system is ready for your review or further testing."
 
 ---
 
-This concludes the story of our example interaction, demonstrating the structured, iterative, and transparent partnership fostered by the AI Worker's guiding principles.
+This concludes the story of our example interaction, demonstrating the structured, iterative, and transparent partnership fostered by the AI Minion's guiding principles.

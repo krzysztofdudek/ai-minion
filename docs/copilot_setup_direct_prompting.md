@@ -1,10 +1,10 @@
 # Using `prompt.md` with GitHub Copilot: Direct Prompting (Simplest Method)
 
-This document outlines the simplest way to use the full `prompt.md` AI worker persona with GitHub Copilot by directly pasting its content into the chat.
+This document outlines the simplest way to use the full `prompt.md` AI minion persona with GitHub Copilot by directly pasting its content into the chat.
 
 ## Method: Direct Pasting of `prompt.md`
 
-This approach is straightforward and ensures Copilot receives the complete set of instructions for a specific, complex task when you need it to adopt the full "AI Worker" persona.
+This approach is straightforward and ensures Copilot receives the complete set of instructions for a specific, complex task when you need it to adopt the full "AI Minion" persona.
 
 1.  **Open `prompt.md`:**
     *   Locate and open the `prompt.md` file from this repository.
@@ -21,7 +21,7 @@ This approach is straightforward and ensures Copilot receives the complete set o
 
 > **User:** (Pastes entire content of `prompt.md`)
 >
-> **User:** Now, acting as the AI Worker defined above, I need you to analyze the `PaymentGateway` interface and propose a plan to integrate a new payment provider.
+> **User:** Now, acting as the AI Minion defined above, I need you to analyze the `PaymentGateway` interface and propose a plan to integrate a new payment provider.
 
 ## When to Use This Method
 
