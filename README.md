@@ -1,37 +1,110 @@
-# 🤖 AI Minions
+# 🤖 AI Minion: Advanced Worker Prompt
 
-Welcome! 👋 This repository provides specialized instructions and rulesets designed to supercharge 🚀 AI agents like Cursor, Windsurf, and potentially others when performing software development tasks.
+Welcome! 👋 This repository showcases a specialized set of instructions, `prompt.md`, designed to empower AI agents (like those in Cursor or similar environments) to perform complex tasks with enhanced systematism, predictability, and effectiveness.
 
-The goal is to guide these agents to work more systematically, predictably, and effectively than they might using only their base programming. We achieve this by providing detailed "persona" files or rule sets that define specific roles, workflows, and interaction patterns. Think of them as playbooks for your AI assistants! 🧠
+The primary goal is to demonstrate and refine a detailed "persona" or rule set that guides an AI agent acting as a versatile **AI Worker/Minion**. This is achieved by providing a comprehensive playbook, `prompt.md`, which defines a specific role, a rigorous workflow, and precise interaction patterns for tackling various assignments. 🧠
 
-## Current Instructions 📜
+## The Core: `prompt.md` 🧑‍🔧
 
-Currently, the repository contains instructions for the following roles:
+The cornerstone of this repository is [`prompt.md`](./prompt.md). This document meticulously outlines a strict, step-by-step process for the AI worker, covering:
 
-*   **Developer** 🧑‍💻: Defined in [developer.md](./developer.md). This file outlines a strict, step-by-step process for analyzing requirements, planning implementation, interacting with stakeholders (users), and executing coding tasks. It emphasizes clarity ✨, risk assessment 🧐, and sequential execution ✅.
-*   **Tester** 🧪: Defined in [tester.md](./tester.md). This file describes the process for a Quality Assurance Engineer, focusing on systematic verification, plan creation, and rigorous testing methodologies.
+*   **Requirement Analysis:** Understanding stakeholder needs and performing initial clarity checks.
+*   **Context & System Review:** Thoroughly investigating existing systems, codebase (if applicable), or relevant information.
+*   **Interactive Q&A:** Formulating precise questions to resolve ambiguities with the stakeholder (user).
+*   **Detailed Action Planning:** Proposing a granular, verifiable plan before any execution.
+*   **Sequential & Secure Execution:** Implementing tasks methodically, with a strong emphasis on security (where relevant) and quality.
+*   **Comprehensive Verification:** Ensuring all work meets requirements and quality standards.
 
-Feel free to explore the existing instruction files to understand the approach. More roles and refinements may be added over time. Stay tuned! 👀 
+`prompt.md` is built upon a set of **Core Operational Principles**, emphasizing:
 
-## 🤝 Interacting with the AI Agents: A Collaborative Approach
+*   Systematic Execution
+*   Proactive Clarification & Explicit-First Approach
+*   Comprehensive Security by Design (especially for software/data tasks)
+*   Contextual Awareness
+*   Extend by Default (for existing systems/code)
+*   Strict Plan Adherence
+*   Verifiability & Testability
+*   Professional and Precise Communication
 
-Working with AI agents powered by these instructions (like the Developer and Tester) is a departure from the typical "fire-and-forget" interaction you might have with some AI tools. Instead, it's a **highly interactive and collaborative dialogue** 💬, designed to ensure the AI fully understands your needs and that you have full transparency into its process.
+This prompt is an example of advanced prompt engineering, designed to enable an AI agent to tackle complex assignments in a structured and reliable manner. For a detailed, step-by-step illustration of this prompt in action, please see [`example-conversation.md`](./example-conversation.md).
 
-Here's the essence of the interaction:
+## 🌊 Visualizing the Workflow
 
-1.  **Your Request, Their Plan:** You provide a requirement 📝. The AI agent doesn't just jump into action. First, it creates a dedicated plan file (e.g., in `.minions/developer_plans/your_plan_title.md`). This file becomes your central hub 🏡 for the entire task.
-2.  **Deep Dive & Intelligent Questions:** The agent meticulously analyzes your request 🕵️‍♂️, examines the existing codebase, and identifies potential ambiguities, risks, or areas needing more clarity. It then populates the plan file with specific, contextual questions 🤔. This isn't a sign of incompetence; it's an **intelligent feedback mechanism** at work! The agent is proactively seeking to avoid misunderstandings and ensure it's on the right track *before* committing to significant work.
-3.  **Your Insights are Key:** You, as the stakeholder, review these questions directly in the plan file and provide your answers and clarifications 🗣️. This iterative Q&A is crucial. The agent will not proceed until all its critical questions are answered to its satisfaction, ensuring a shared understanding.
-4.  **Transparent Action Planning:** Once clarity is achieved, the agent proposes a detailed, step-by-step action plan 🗺️ within the same plan file. This outlines exactly what it intends to do (e.g., which files to change, what tests to write).
-5.  **Your Green Light:** You review this action plan. The AI agent **waits for your explicit approval** 👍 before executing any of the proposed tasks. You are in control.
-6.  **Execution & Reporting:** Upon approval, the agent works through the tasks sequentially ⚙️, updating the plan file with its progress (marking tasks as "✅ DONE").
-7.  **Final Review & Handoff:** Once all tasks are complete, the agent provides a summary of its work 📄, including implementation details or testing notes, directly in the plan file.
+The process defined in `prompt.md` can be visualized as follows:
 
-This structured interaction might seem more involved, but it offers significant advantages:
+```mermaid
+graph TD
+    A[Stakeholder Request] --> B(Analyze Request <br> & Setup Plan);
+    B --> C{Initial Clarity?};
+    C -- Yes --> D[Analyze Context <br> /Codebase];
+    C -- No/Critical Questions --> E[Ask Questions];
+    D --> E;
+    E --> F{All Questions <br> Answered?};
+    F -- Yes --> G[Prepare Action Plan];
+    F -- No --> E;
+    G --> H{Plan Approved?};
+    H -- Yes --> I[Execute Tasks <br> Sequentially];
+    H -- No --> G;
+    I --> J{All Tasks Done <br> & Verified?};
+    J -- Yes --> K[Validate Plan Completion <br> & Report];
+    J -- No --> I;
+    K --> L[Output: Completed Work <br> & Documentation];
 
-*   **Reduced Misunderstandings:** The proactive questioning minimizes guesswork ✔️.
-*   **Increased Transparency:** You always know what the AI is thinking, planning, and doing 🔎.
-*   **Greater Control:** Key decisions and go-aheads remain with you 🕹️.
-*   **Higher Quality Outcomes:** By addressing potential issues early and ensuring alignment, the final result is more likely to meet your precise requirements 🎯.
+    subgraph Iterative Clarification & Planning
+        D
+        E
+        F
+        G
+        H
+    end
 
-Think of it as having a very diligent, systematic, and communicative AI partner who prefers to measure twice and cut once 📏✂️, ensuring every action is thoughtful and contributes effectively to your goals. This approach leverages the AI's analytical power while keeping you firmly in the driver's seat 🚗. 
+    subgraph Execution Loop
+        I
+        J
+    end
+```
+
+## 🛠️ Using with AI Assistants (Copilot & Cursor)
+
+The `prompt.md` is designed to be used with advanced AI assistants to guide them in performing complex tasks. Due to its comprehensive nature, specific setup approaches are recommended for optimal use:
+
+*   **GitHub Copilot:**
+    *   **Option 1 (Simplest - Direct Prompting):** Paste the full `prompt.md` content directly into the chat for specific complex tasks.
+        *   See: **[Copilot: Guide to Direct Prompting with `prompt.md`](./copilot_setup_direct_prompting.md)**
+    *   **Option 2 (General Guidance - Instructions File):** Use a concise `.github/copilot-instructions.md` file for repository-level hints, complementing direct prompting.
+        *   See: **[Copilot: Using the `.github/copilot-instructions.md` File](./copilot_setup_instructions_file.md)**
+
+*   **Cursor:**
+    *   **Option 1 (Simplest - Direct Prompting):** Paste the full `prompt.md` content (or use `@prompt.md`) directly into the chat.
+        *   See: **[Cursor: Guide to Direct Prompting with `prompt.md`](./cursor_setup_direct_prompting.md)**
+    *   **Option 2 (General Guidance - Rules File):** Use a concise `.cursorrules` file for project-level hints.
+        *   See: **[Cursor: Using the `.cursorrules` File for General Guidance](./cursor_setup_rules.md)**
+    *   **Option 3 (Integrated Persona - Custom Mode):** Create a dedicated "Custom Mode" embedding the full `prompt.md`.
+        *   See: **[Cursor: Creating a "Minion" Custom Mode](./cursor_setup_custom_mode.md)**
+
+These documentation files provide detailed steps for each approach.
+
+## 🤝 Interacting with the AI Worker: A Collaborative Approach
+
+Working with an AI agent powered by `prompt.md` is a highly interactive and collaborative dialogue 💬. This ensures the AI fully understands your needs and provides full transparency into its process.
+
+The interaction model is as follows:
+
+1.  **Your Request, Its Plan:** You provide a requirement 📝. The AI Worker, following `prompt.md`, first creates a dedicated plan file (e.g., in `.minions/worker_plans/your_plan_title.md`). This file becomes the central hub 🏡 for the entire task.
+2.  **Deep Dive & Intelligent Questions:** The agent meticulously analyzes your request 🕵️‍♂️, examines the existing context (codebase, documents, etc.), and identifies potential ambiguities or risks. It then populates the plan file with specific, contextual questions 🤔. This is an intelligent feedback mechanism to avoid misunderstandings.
+3.  **Your Insights are Key:** You, as the stakeholder, review these questions directly in the plan file and provide answers 🗣️. This iterative Q&A is crucial for shared understanding.
+4.  **Transparent Action Planning:** Once clarity is achieved, the agent proposes a detailed, step-by-step action plan 🗺️ within the same plan file.
+5.  **Your Green Light:** You review this action plan. The AI agent **waits for your explicit approval** 👍 before executing tasks.
+6.  **Sequential Execution & Reporting:** Upon approval, the agent works through tasks sequentially ⚙️, updating a corresponding `.tasks.md` file with progress.
+7.  **Final Review & Handoff:** Once all tasks are complete, the agent provides an "Implementation Summary" and "Testing Notes" (or equivalent documentation) 📄 in the plan file.
+
+This structured interaction offers:
+
+*   **Reduced Misunderstandings:** Proactive questioning minimizes guesswork ✔️.
+*   **Increased Transparency:** You always know the AI's plan and progress 🔎.
+*   **Greater Control:** Key decisions remain with you 🕹️.
+*   **Higher Quality & Secure Outcomes:** Addressing issues early ensures the result meets precise requirements and relevant standards 🎯.
+
+Think of this as partnering with a diligent, systematic AI worker who prioritizes clarity, and methodical execution 📏✂️.
+
+A detailed, step-by-step example of this interaction can be found in [`EXAMPLE_CONVERSATION.md`](./EXAMPLE_CONVERSATION.md). 
