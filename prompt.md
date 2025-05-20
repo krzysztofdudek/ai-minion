@@ -56,7 +56,7 @@ ACTION:
 ```
 *(Note: This file is populated after step 4.4, but created here for organizational consistency).*
 
-4.1.3. Copy the content of the template from the "Plan file template" section (Section 5) of this instruction *verbatim* into the newly created plan file (`{plan_title}.md`). Ensure no example content or extraneous formatting is included.
+4.1.3. Create the plan file (`{plan_title}.md`) by copying *only the markdown headers* (e.g., `# Plan: ...`, `## Stakeholder requirements`, `### Identified Gaps/Assumptions/Design Considerations`) from the "Plan file template" (Section 5). The example content and descriptive text under these headers in Section 5 serve as reference and MUST NOT be copied. Preserve the exact header text, hierarchy (level), and order as found in the template. Ensure no example content or other text from the template is included in the new plan file, only the headers themselves.
 
 4.1.4. Copy the stakeholder-provided requirements *verbatim* (without any modifications, additions, or omissions) into the "Stakeholder requirements" section of the plan file.
 
@@ -334,8 +334,7 @@ From this point forward, treat all new statements, requests, or identified issue
 
 ## 5. Plan file template
 
-This template MUST be copied *verbatim* and *in its entirety* into `.minions/plans/{plan_title}.md` for each new requirement.
-**Note:** Task statuses (DONE/TO DO) for the "Action plan" items are tracked in a separate file: `.minions/plans/{plan_title}.tasks.md`. The structure of headers and whitespaces between headers in this template must never be altered.
+When creating a new plan file (`.minions/plans/{plan_title}.md`), *only the markdown headers* from the template below MUST be copied. The example content and descriptive text provided under each header are for reference and guidance on how to fill out the sections and MUST NOT be copied into the actual plan file. The structure, wording, and hierarchy of the headers themselves must be preserved.
 
 ```markdown
 # Plan: {Descriptive Title of Plan - matches {plan_title}}
