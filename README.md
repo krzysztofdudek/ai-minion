@@ -26,7 +26,7 @@ The cornerstone of this repository is [`prompt.md`](./prompt.md). This document 
 *   Verifiability & Testability
 *   Professional and Precise Communication
 
-This prompt is an example of advanced prompt engineering, designed to enable an AI agent to tackle complex assignments in a structured and reliable manner. For a detailed, step-by-step illustration of this prompt in action, please see [`example-conversation.md`](./example-conversation.md).
+This prompt is an example of advanced prompt engineering, designed to enable an AI agent to tackle complex assignments in a structured and reliable manner. For a detailed, step-by-step illustration of this prompt in action, please see [`example-conversation.md`](./docs/example-conversation.md).
 
 ## 🌊 Visualizing the Workflow
 
@@ -70,17 +70,17 @@ The `prompt.md` is designed to be used with advanced AI assistants to guide them
 
 *   **GitHub Copilot:**
     *   **Option 1 (Simplest - Direct Prompting):** Paste the full `prompt.md` content directly into the chat for specific complex tasks.
-        *   See: **[Copilot: Guide to Direct Prompting with `prompt.md`](./copilot_setup_direct_prompting.md)**
+        *   See: **[Copilot: Guide to Direct Prompting with `prompt.md`](./docs/copilot_setup_direct_prompting.md)**
     *   **Option 2 (General Guidance - Instructions File):** Use a concise `.github/copilot-instructions.md` file for repository-level hints, complementing direct prompting.
-        *   See: **[Copilot: Using the `.github/copilot-instructions.md` File](./copilot_setup_instructions_file.md)**
+        *   See: **[Copilot: Using the `.github/copilot-instructions.md` File](./docs/copilot_setup_instructions_file.md)**
 
 *   **Cursor:**
     *   **Option 1 (Simplest - Direct Prompting):** Paste the full `prompt.md` content (or use `@prompt.md`) directly into the chat.
-        *   See: **[Cursor: Guide to Direct Prompting with `prompt.md`](./cursor_setup_direct_prompting.md)**
+        *   See: **[Cursor: Guide to Direct Prompting with `prompt.md`](./docs/cursor_setup_direct_prompting.md)**
     *   **Option 2 (General Guidance - Rules File):** Use a concise `.cursorrules` file for project-level hints.
-        *   See: **[Cursor: Using the `.cursorrules` File for General Guidance](./cursor_setup_rules.md)**
+        *   See: **[Cursor: Using the `.cursorrules` File for General Guidance](./docs/cursor_setup_rules.md)**
     *   **Option 3 (Integrated Persona - Custom Mode):** Create a dedicated "Custom Mode" embedding the full `prompt.md`.
-        *   See: **[Cursor: Creating a "Minion" Custom Mode](./cursor_setup_custom_mode.md)**
+        *   See: **[Cursor: Creating a "Minion" Custom Mode](./docs/cursor_setup_custom_mode.md)**
 
 These documentation files provide detailed steps for each approach.
 
@@ -107,4 +107,4 @@ This structured interaction offers:
 
 Think of this as partnering with a diligent, systematic AI worker who prioritizes clarity, and methodical execution 📏✂️.
 
-A detailed, step-by-step example of this interaction can be found in [`EXAMPLE_CONVERSATION.md`](./EXAMPLE_CONVERSATION.md). 
+A detailed, step-by-step example of this interaction can be found in [`EXAMPLE_CONVERSATION.md`](./docs/EXAMPLE_CONVERSATION.md). 
