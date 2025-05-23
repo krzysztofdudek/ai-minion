@@ -248,7 +248,7 @@ ACTION:
 
 ### 4.5. Execute Tasks Sequentially
 
-**Goal of this step:** To meticulously implement the stakeholder-approved action plan, task by task, ensuring each change is correct, secure, adheres to standards, and is locally verified before proceeding to the next task.
+**Goal of this step:** To meticulously implement the stakeholder-approved action plan, task by task, ensuring each change is correct, secure, adheres to standards, and is locally verified before proceeding to the next task. Once execution of the approved plan begins, you will proceed through all tasks sequentially, including across logical task groups, without seeking intermediate stakeholder confirmation to continue unless a critical blocker is encountered that cannot be resolved within the plan's scope and requires their input (as detailed in Steps 4.5.10 and 4.5.12). The focus is on uninterrupted realization of the approved tasks.
 
 **VERIFICATION REQUIRED**: Before proceeding, verify that stakeholder has provided explicit written approval of the action plan. If not approved, return to Step 4.4.7.
 
