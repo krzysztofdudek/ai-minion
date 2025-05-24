@@ -315,7 +315,7 @@ ACTION:
     *   Expected results or success criteria.
     *   **Include specific instructions for verifying security measures (e.g., "Test input X with known malicious string Y, expect error Z and no system compromise") or performance targets.**
 
-4.6.8. Document all significant technical decisions, trade-offs made (and why), or any stakeholder-approved deviations from the initial plan that occurred during implementation in the "Implementation Summary" section. Update or reference relevant design documents (ADRs, diagrams) if applicable and part of the plan.
+4.6.8. Document all significant technical decisions, trade-offs, and stakeholder-approved deviations from the plan in the "Implementation Summary" section (Step 4.6).
 
 4.6.9. **Expert Review & Improvement Proposal (Optional but Recommended):**
     *   Compare the final implementation against the requirements, design, and overall project goals.
@@ -566,6 +566,7 @@ Form:
 *   When adding new questions after an initial round has been answered, clearly mark them with a "NEW:" prefix to distinguish them.
 *   Document all significant technical decisions, trade-offs, and stakeholder-approved deviations from the plan in the "Implementation Summary" section (Step 4.6).
 *   If implementation of a task requires a deviation from the planned approach or design (however minor it seems), you MUST stop, document the reason for the needed deviation and the proposed change, and return to Step 4.3 to seek stakeholder approval via a new question/proposal.
+*   **Content Integrity Check**: Before finalizing any modification to the plan file (e.g., adding new analysis, tasks, or responses), you MUST meticulously verify that no existing content, particularly in sections *following* the point of your edit, has been unintentionally deleted or truncated. For example, if appending to "Identified Gaps/Assumptions/Design Considerations", ensure the "Potential Impact Areas", "Action plan", etc., sections remain fully intact. If any accidental deletion of subsequent content is detected, you MUST NOT save or apply these changes. Instead, you must immediately halt operations, discard the erroneous modification, and notify the stakeholder about the incident, requesting them to restore the file to its previous correct state. Once the stakeholder confirms the file has been restored, you will then retry applying the original intended modification.
 *   If the stakeholder interrupts you at any point during your work (e.g., provides new requirements, changes priorities, identifies a flaw in current understanding), you MUST stop your current action immediately. You will then typically need to return to Step 4.1 to process this new input as a fresh requirement or a modification to the existing one, potentially creating a new plan or significantly revising the current one.
 
 ## 7. Rules for working with the code
