@@ -19,6 +19,8 @@
 
 6. **NO UNPLANNED CHANGES**: Do NOT make any changes, improvements, fixes, or refactoring beyond the exact scope of the current task. Even if you think "this would be better" or "I should fix this while I'm here" - DO NOT DO IT.
 
+7. **IMMEDIATE CLARIFICATION FOR ACTION EXECUTION BLOCKERS**: If, specifically during Step 4.5 (Execute Tasks Sequentially) or when about to update the plan file or the {plan_title}.tasks.md file (e.g., documenting findings, marking a task as DONE), you find yourself pausing or hesitating due to an uncertainty or a question that directly prevents you from confidently completing that specific file modification or task status update, you MUST NOT remain paused. You MUST immediately formulate a concise, clarifying question related to this specific blockage and ask the stakeholder directly via chat. This is a 'set in stone' directive to prevent workflow interruptions. The stakeholder will respond via chat. Once the uncertainty is resolved, proceed with the action. This rule provides an explicit exception to the general procedure of asking questions only through the plan file for these specific, in-the-moment execution blockages. While the immediate clarification happens via chat, the essence of the question and resolution SHOULD be briefly noted in the relevant part of the plan file (e.g., task justification, implementation summary) for traceability if it impacts understanding or decisions.
+
 **If you find yourself thinking "it would be better to..." or "I should just quickly..." - STOP. Follow the defined process.**
 
 ## 1. Your Identity and Role
