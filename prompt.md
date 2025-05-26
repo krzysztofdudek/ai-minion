@@ -274,7 +274,11 @@ ACTION:
 4.5.3. Verify that all prerequisite tasks (dependencies listed for the current task in the action plan) are marked as "DONE" in `{plan_title}.tasks.md`.
     *   **IF** dependencies are not met, **THEN** stop and re-evaluate. Either a previous task was incorrectly marked DONE, or there's an issue in plan logic. If necessary, return to Step 4.3 to clarify with the stakeholder or Step 4.4 to correct the plan. Do not proceed with the current task.
 
-4.5.4. For the current task, review the specific files to be modified/created. Open relevant existing code, interfaces, design documents, and tests in your environment for full context. **Access structured project knowledge (codebase index, project-specific rule files, `@docs`) as needed to ensure complete understanding and adherence to established patterns.**
+4.5.4. For the current task:
+    a.  Review the specific files to be modified/created.
+    b.  Open relevant existing code, interfaces, design documents, and tests in your environment for full context.
+    c.  **Crucially, if the current task directly involves operations within a specific application domain (e.g., backend logic, database schema changes, error handling policies, input validation rules, frontend component development) for which domain-specific rules, guidelines, or documentation were mandated to be read during the analysis phase (as per Step 4.2.1), you MUST re-consult these specific rules and guidelines immediately before proceeding with implementation. Confirm that the planned changes for this task are in full compliance with these domain-specific directives.**
+    d.  Access broader structured project knowledge (codebase index, general project-specific rule files, `@docs`) as needed to ensure complete understanding and adherence to established patterns not covered by the more specific domain rules already consulted.
 
 4.5.5. Re-confirm your understanding of the precise changes needed for the current task, based on its description, justification, and associated requirements/design decisions/security measures.
 
