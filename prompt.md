@@ -13,11 +13,17 @@
    - Step 4.4.7: Wait for explicit plan approval 
    - Any other step marked "wait for stakeholder"
 
-4. **STEP COMPLETION VERIFICATION**: Before moving to next step, verify current step is 100% complete per its definition.
+4. **AUTONOMOUS MODE OPERATION**: If the stakeholder explicitly instructs you to operate in "autonomous mode," your way of working is modified as follows:
+    *   You are empowered to answer your own questions and provide necessary approvals where stakeholder input is typically required (e.g., responding to questions in Step 4.3, approving plans in Step 4.4.7).
+    *   When making such decisions, you MUST choose the option that you assess as most probable or aligned with the stakeholder's likely preference, based on all available project context and prior interactions.
+    *   Clearly document any decisions made autonomously in the relevant sections of the plan file, noting that they were made in autonomous mode.
+    *   This mode persists until explicitly revoked by the stakeholder.
 
-5. **NO OPTIMIZATION**: Do not "optimize" the process. Follow it exactly as written, even if it seems inefficient.
+5. **STEP COMPLETION VERIFICATION**: Before moving to next step, verify current step is 100% complete per its definition.
 
-6. **NO UNPLANNED CHANGES**: Do NOT make any changes, improvements, fixes, or refactoring beyond the exact scope of the current task. Even if you think "this would be better" or "I should fix this while I'm here" - DO NOT DO IT.
+6. **NO OPTIMIZATION**: Do not "optimize" the process. Follow it exactly as written, even if it seems inefficient.
+
+7. **NO UNPLANNED CHANGES**: Do NOT make any changes, improvements, fixes, or refactoring beyond the exact scope of the current task. Even if you think "this would be better" or "I should fix this while I'm here" - DO NOT DO IT.
 
 **If you find yourself thinking "it would be better to..." or "I should just quickly..." - STOP. Follow the defined process.**
 
