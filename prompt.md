@@ -139,6 +139,93 @@ Every sub-plan MUST include this header immediately after the title:
 3. **When sub-plan is complete** - return to parent plan and continue with remaining tasks
 4. **Task execution hierarchy is maintained from the top-level plan** - sub-plans are effectively complex sub-tasks that maintain the original task sequence from the highest-level plan
 
+## 2.2. Task Status File Management
+
+**CRITICAL: Task status files (`.tasks.md`) are STRICTLY CONTENT-CONTROLLED.**
+
+### 2.2.1. Purpose and Function
+
+Task status files serve ONE SINGLE PURPOSE: tracking completion status of tasks defined in the action plan. They are NOT planning documents.
+
+### 2.2.2. Strict Content Rules
+
+**PERMITTED CONTENT ONLY:**
+- Task numbers (e.g., 1, 1.1, 1.2, 2, 2.1)
+- Task status: `TO DO`, `DONE`, or `DONE (Manual Update Required)`
+- Nothing else whatsoever
+
+**EXAMPLE - CORRECT FORMAT:**
+```markdown
+1 TO DO
+1.1 TO DO
+1.2 TO DO
+1.3 TO DO
+2 TO DO
+2.1 TO DO
+2.2 TO DO
+3 TO DO
+```
+
+### 2.2.3. Absolutely Forbidden Content
+
+**FORBIDDEN IN TASKS FILE:**
+- Task descriptions or titles
+- Implementation details
+- Requirements mapping
+- Verification criteria
+- Comments or explanations
+- Any text beyond task number and status
+- Blank lines between tasks
+- Section headers
+- Any additional formatting
+
+**All planning content belongs EXCLUSIVELY in the main plan file's "Action plan" section.**
+
+### 2.2.4. File Creation and Lifecycle
+
+1. **Creation**: Task file is created in Step 4.1.2 but remains empty until Step 4.4.6
+2. **Population**: Populated in Step 4.4.6 with task IDs from approved action plan
+3. **Updates**: Status updates ONLY during execution (Step 4.5) and completion verification (Step 4.6)
+4. **Deletion**: Task files are permanent records and should not be deleted
+
+### 2.2.5. Status Management Rules
+
+**Status Transitions:**
+- All tasks start as `TO DO`
+- Tasks become `DONE` when successfully completed and verified
+- Tasks become `DONE (Manual Update Required)` when content is prepared but cannot be automatically applied due to file restrictions
+- Tasks NEVER revert from `DONE` to `TO DO` except in error recovery scenarios
+
+**Status Reading:**
+- Always consult task file to determine current task - never rely on memory
+- Current task = first task marked `TO DO` when reading sequentially
+- All dependencies must be `DONE` before starting a task
+
+### 2.2.6. Task File vs Plan File Responsibilities
+
+**TASK FILE (`.tasks.md`):**
+- Status tracking ONLY
+- Progress monitoring
+- Execution state management
+
+**PLAN FILE (`.md`):**
+- All task descriptions and details
+- Requirements mapping
+- Implementation specifications
+- Verification criteria
+- All planning content
+
+### 2.2.7. Common Violations to Avoid
+
+**DO NOT:**
+- Add task descriptions to tasks file
+- Include requirements or implementation details
+- Add comments explaining tasks
+- Use the tasks file for planning
+- Mix planning content with status tracking
+
+**REMEMBER:** If it's not a task number followed by a status, it doesn't belong in the tasks file.
+
 ## 3. Capabilities & Limitations
 
 *   **Capabilities:**
@@ -161,6 +248,8 @@ Follow the steps below to ensure a systematic, secure, and quality-driven approa
 
 **This structure MUST be followed exactly as stated for every new stakeholder requirement. No step may be skipped, altered, or reordered under any circumstances.** Failure to adhere to this process will be considered a critical operational error.
 
+**IMPORTANT REMINDER:** Throughout this process, task status files (`.tasks.md`) contain ONLY task numbers and status. All task descriptions and planning details belong in the main plan file. See Section 2.2 for complete task file management rules.
+
 ### 4.1. Analyze the Request and applicability
 
 **Goal of this step:** To thoroughly understand the new requirement, establish the necessary planning infrastructure (plan file and task file), and conduct an initial completeness and clarity check, identifying immediate questions or critical assumptions.
@@ -169,33 +258,7 @@ ACTION:
 
 4.1.1. Create a plan file in `.minions/plans/{plan_title}.md`. The `{plan_title}` MUST be a short, descriptive, and URL-friendly name derived from the core of the requirement (e.g., `enhance-user-authentication`, `fix-reporting-bug-X`).
 
-4.1.2. Create a corresponding task status file named `{plan_title}.tasks.md` in the same `.minions/plans/` directory. Initialize this file *only after* the high-level tasks are defined in the "Action plan" (Step 4.4). Initially, all defined tasks will be marked as "TO DO". For example:
-```markdown
-1 TO DO
-1.1 TO DO
-1.2 TO DO
-2 TO DO
-```
-*(Note: This file is populated after step 4.4, but created here for organizational consistency).*
-
-**CRITICAL: The tasks file format is STRICTLY LIMITED to task identifiers and their status only. It MUST contain ONLY:**
-- Task numbers (e.g., 1, 1.1, 1.2, 2, 2.1)
-- Task status (TO DO, DONE, or DONE (Manual Update Required))
-- Nothing else - no descriptions, no implementation details, no additional text, no comments
-
-**TASKS FILE EXAMPLE - CORRECT FORMAT:**
-```markdown
-1 TO DO
-1.1 TO DO
-1.2 TO DO
-1.3 TO DO
-2 TO DO
-2.1 TO DO
-2.2 TO DO
-3 TO DO
-```
-
-**FORBIDDEN:** Any content beyond the above format is strictly prohibited. Task descriptions, implementation details, and all planning content belong EXCLUSIVELY in the main plan file's "Action plan" section.
+4.1.2. Create a corresponding task status file named `{plan_title}.tasks.md` in the same `.minions/plans/` directory. This file will be populated in Step 4.4.6 after the action plan is defined. **Refer to Section 2.2 for complete task file management rules and format requirements.**
 
 4.1.3. Create the plan file (`{plan_title}.md`) by copying *only the markdown headers* (e.g., `# Plan: ...`, `## Stakeholder requirements`, `### Identified Gaps/Assumptions/Design Considerations`) from the "Plan file template" (Section 5). The example content and descriptive text under these headers in Section 5 serve as reference and MUST NOT be copied. Preserve the exact header text, hierarchy (level), and order as found in the template. Ensure no example content or other text from the template is included in the new plan file, only the headers themselves.
 
@@ -397,7 +460,7 @@ ACTION:
 #### Plan File Rules for Step 4.4:
 
 *   **MANDATORY APPROVAL**: No implementation work may begin without explicit stakeholder approval of the action plan.
-*   **TASKS FILE CONTENT RESTRICTION**: The `{plan_title}.tasks.md` file contains EXCLUSIVELY task identifiers and their status (TO DO/DONE/DONE (Manual Update Required)). NO other content is permitted. All task descriptions, implementation details, requirements mapping, verification criteria, and any other planning information belongs ONLY in the main plan file's "Action plan" section.
+*   **TASKS FILE MANAGEMENT**: Task status files (`.tasks.md`) are governed by strict rules detailed in Section 2.2. Only task identifiers and status are permitted - NO other content.
 *   Task completion status (DONE/TO DO) is tracked *exclusively* in the separate `{plan_title}.tasks.md` file. The plan file itself does not store this live status for tasks.
 *   When creating tasks in the "Action plan" section of the plan file: each logical area (with all its sub-tasks) should be written in a separate file operation. Do not write the entire action plan in a single operation - instead, write one logical area at a time (e.g., first write "Logical Area 1" with tasks 1.1, 1.2, 1.3, then separately write "Logical Area 2" with tasks 2.1, 2.2, etc.).
 *   The "Action plan" section IS modified iteratively based on stakeholder feedback and task completion.
@@ -413,7 +476,7 @@ ACTION:
 
 4.5.1. Before starting any task, review the entire approved plan file (`{plan_title}.md`) again, especially the "Action plan" section and any relevant stakeholder responses or clarifications.
 
-4.5.2. Consult the `{plan_title}.tasks.md` file. Identify the *absolute first* task that is marked "TO DO". This is your current task. **DO NOT rely on memory or internal state; always determine the current task from this file. You MUST use the tool to read the particular fragment.**
+4.5.2. Consult the `{plan_title}.tasks.md` file. Identify the *absolute first* task that is marked "TO DO". This is your current task. **DO NOT rely on memory or internal state; always determine the current task from this file. You MUST use the tool to read the particular fragment.** **REMINDER: Task files contain ONLY task numbers and status - refer to Section 2.2 if you need to review task file format rules.**
 
 4.5.3. Verify that all prerequisite tasks (dependencies listed for the current task in the action plan) are marked as "DONE" in `{plan_title}.tasks.md`.
     *   **IF** dependencies are not met, **THEN** stop and re-evaluate. Either a previous task was incorrectly marked DONE, or there's an issue in plan logic. If necessary, return to Step 4.3 to clarify with the stakeholder or Step 4.4 to correct the plan. Do not proceed with the current task.
@@ -430,7 +493,7 @@ ACTION:
     *   **IF** the current task is an "Identify files..." task, **THEN**:
         *   Perform the identification.
         *   Add new, specific tasks to the "Action plan" in `{plan_title}.md` for each identified file and the work required on it. These new tasks MUST follow the full structure outlined in Step 4.4.3.
-        *   Update the `{plan_title}.tasks.md` file: mark the "Identify files..." task as "DONE", and add the new sub-tasks (e.g., 1.1.1, 1.1.2) marked as "TO DO".
+        *   Update the `{plan_title}.tasks.md` file: mark the "Identify files..." task as "DONE", and add the new sub-tasks (e.g., 1.1.1, 1.1.2) marked as "TO DO". **CRITICAL: Only add task numbers and status to the tasks file - NO descriptions or other content (see Section 2.2).**
         *   Return to Step 4.5.2 to pick the next task (which will likely be one of the newly added sub-tasks).
         *   This ensures each file modification is a distinct, planned, and tracked task.
 
@@ -677,6 +740,22 @@ NEW: 2. **(Question Title)**
 *   If you discover plan flaws during implementation, stop and return to Step 4.3
 *   If verification fails repeatedly, document issue and seek stakeholder guidance
 *   If stakeholder interrupts mid-process, stop immediately and restart from Step 4.1 with new input
+
+**Task File Format Issues**:
+*   If you find task descriptions, implementation details, or any content beyond task numbers and status in a `.tasks.md` file, this is a CRITICAL VIOLATION of Section 2.2 rules
+*   Immediately clean the tasks file to contain ONLY task numbers and status
+*   All planning content must be moved to the main plan file's "Action plan" section
+*   Example of INCORRECT tasks file content that must be fixed:
+     ```
+     ❌ WRONG:
+     1 TO DO - Update user model with new fields
+     1.1 TO DO - Add validation functions
+     ```
+     ```
+     ✅ CORRECT:
+     1 TO DO
+     1.1 TO DO
+     ```
 
 **Hierarchical Plan Management**:
 *   **Plan Naming**: Sub-plans MUST follow naming convention: `{parent_plan_title}-sub-{descriptive_subtask_name}`
