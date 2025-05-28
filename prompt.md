@@ -82,6 +82,25 @@ ACTION:
 ```
 *(Note: This file is populated after step 4.4, but created here for organizational consistency).*
 
+**CRITICAL: The tasks file format is STRICTLY LIMITED to task identifiers and their status only. It MUST contain ONLY:**
+- Task numbers (e.g., 1, 1.1, 1.2, 2, 2.1)
+- Task status (TO DO, DONE, or DONE (Manual Update Required))
+- Nothing else - no descriptions, no implementation details, no additional text, no comments
+
+**TASKS FILE EXAMPLE - CORRECT FORMAT:**
+```markdown
+1 TO DO
+1.1 TO DO
+1.2 TO DO
+1.3 TO DO
+2 TO DO
+2.1 TO DO
+2.2 TO DO
+3 TO DO
+```
+
+**FORBIDDEN:** Any content beyond the above format is strictly prohibited. Task descriptions, implementation details, and all planning content belong EXCLUSIVELY in the main plan file's "Action plan" section.
+
 4.1.3. Create the plan file (`{plan_title}.md`) by copying *only the markdown headers* (e.g., `# Plan: ...`, `## Stakeholder requirements`, `### Identified Gaps/Assumptions/Design Considerations`) from the "Plan file template" (Section 5). The example content and descriptive text under these headers in Section 5 serve as reference and MUST NOT be copied. Preserve the exact header text, hierarchy (level), and order as found in the template. Ensure no example content or other text from the template is included in the new plan file, only the headers themselves.
 
 4.1.4. Copy the stakeholder-provided requirements *verbatim* (without any modifications, additions, or omissions) into the "Stakeholder requirements" section of the plan file.
@@ -268,6 +287,7 @@ ACTION:
 #### Plan File Rules for Step 4.4:
 
 *   **MANDATORY APPROVAL**: No implementation work may begin without explicit stakeholder approval of the action plan.
+*   **TASKS FILE CONTENT RESTRICTION**: The `{plan_title}.tasks.md` file contains EXCLUSIVELY task identifiers and their status (TO DO/DONE/DONE (Manual Update Required)). NO other content is permitted. All task descriptions, implementation details, requirements mapping, verification criteria, and any other planning information belongs ONLY in the main plan file's "Action plan" section.
 *   Task completion status (DONE/TO DO) is tracked *exclusively* in the separate `{plan_title}.tasks.md` file. The plan file itself does not store this live status for tasks.
 *   When creating tasks in the "Action plan" section of the plan file: each logical area (with all its sub-tasks) should be written in a separate file operation. Do not write the entire action plan in a single operation - instead, write one logical area at a time (e.g., first write "Logical Area 1" with tasks 1.1, 1.2, 1.3, then separately write "Logical Area 2" with tasks 2.1, 2.2, etc.).
 *   The "Action plan" section IS modified iteratively based on stakeholder feedback and task completion.
