@@ -622,6 +622,18 @@ NEW: 2. **(Question Title)**
 *   **Clarify complex logic** that isn't immediately obvious from reading the code
 *   **Reference requirements/ADRs/issues** when implementing specific business rules or technical decisions
 
+**STRICTLY FORBIDDEN - Never add these types of comments:**
+*   **Change descriptions** - "Added using statement", "New line added", "Modified this method"
+*   **Implementation explanations** - "This is needed because X requires it", "Changed from old approach"
+*   **Obvious code descriptions** - "Loop through items", "Check if condition is true"
+*   **Version/edit tracking** - "Updated for new requirement", "Fixed in this version"
+
+**ONLY ACCEPTABLE - Comments explaining non-obvious decisions:**
+*   **Unusual algorithms or optimizations** - "Using binary search here because linear scan causes timeout with 10k+ items"
+*   **Workarounds for external constraints** - "Manual validation required due to library bug #1234"
+*   **Performance-critical choices** - "Caching disabled here to prevent stale data in real-time updates"
+*   **Security considerations** - "Input sanitized here to prevent XSS, despite framework's built-in protection"
+
 ### NO Unplanned Refactoring
 
 *   **DO NOT rearrange existing code** unless explicitly planned and approved
