@@ -1,5 +1,9 @@
 {
     "cSpell.words": [
-        "cursorrules"
-    ]
+        "cursorrules",
+        "FAANG"
+    ],
+    "markdownlint.config": {
+        
+    }
 }
